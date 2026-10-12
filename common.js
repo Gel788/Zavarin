@@ -12,7 +12,7 @@ window.Z={CAPTURE,
  toast(msg,sub){let t=document.querySelector('.toast');if(!t){t=document.createElement('div');t.className='toast';document.body.appendChild(t);}
   t.innerHTML=`<b>${msg}</b><span>${sub||''}</span>`;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2600);},
  heart:'<svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 7 4.5c2.1 0 3.6 1.2 5 3 1.4-1.8 2.9-3 5-3 3.6 0 5.6 3.5 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>',
- data:null,async load(){if(!this.data)this.data=await (await fetch('products.json?v=3')).json();return this.data;},
+ data:null,async load(){if(!this.data)this.data=await (await fetch('products.json?v=5')).json();return this.data;},
  bind(root=document){
   const cur=document.querySelector('.cursor');
   root.querySelectorAll('a,button,select,input,[data-hover]').forEach(el=>{if(el._b)return;el._b=1;el.addEventListener('mouseenter',()=>cur&&cur.classList.add('on'));el.addEventListener('mouseleave',()=>cur&&cur.classList.remove('on'));});

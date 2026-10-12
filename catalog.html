@@ -1,121 +1,123 @@
 <!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Каталог — Ювелирный дом ЗАВАРИН</title>
+<title>Каталог — ЗАВАРИН</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400;500;600&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="pages.css?v=3">
+<link rel="stylesheet" href="pages.css?v=5">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="common.js?v=3"></script>
-<style>
-@view-transition{navigation:auto}
-::view-transition-group(pimg){animation-duration:.75s;animation-timing-function:cubic-bezier(.7,0,.2,1)}
-
-.chero{padding:170px 48px 70px;min-height:56vh;display:flex;flex-direction:column;justify-content:flex-end}
-.chero h1{font-family:'Cormorant SC';font-weight:400;font-size:clamp(64px,8vw,132px);letter-spacing:.1em;line-height:.9;margin:26px 0 20px;background:linear-gradient(175deg,#f6e3b4,#d8bd7e 40%,#9b7e40 65%,#e8d29c 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.chero .row{display:flex;justify-content:space-between;align-items:end;gap:40px;position:relative;z-index:1}
-.chero p{font-family:'Cormorant Garamond';font-size:24px;line-height:1.4;max-width:560px;color:#e9dfcd}
-.chero .cnt{font-family:'Cormorant Garamond';font-size:20px;color:var(--gold2);text-align:right}.chero .cnt b{display:block;font-size:64px;font-weight:300;line-height:1}
-.chero .flo{position:absolute;right:16vw;top:70px;width:540px;height:340px;pointer-events:none;opacity:.9}
-.chero .flo img{position:absolute;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
-.tabs{position:sticky;top:66px;z-index:30;background:rgba(245,240,230,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.tabs .in{display:flex;gap:6px;padding:0 48px;overflow-x:auto;scrollbar-width:none}
-.tab{position:relative;padding:22px 18px;min-height:48px;font-family:'Cormorant SC';font-size:16px;letter-spacing:.2em;color:var(--mute);white-space:nowrap;background:none;border:0;transition:color .4s}
-.tab sup{font-family:Manrope;font-size:10px;letter-spacing:0;margin-left:4px;color:var(--gold)}
-.tab:after{content:"";position:absolute;left:18px;right:18px;bottom:-1px;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .6s var(--ease)}
-.tab.on{color:var(--text)}.tab.on:after{transform:scaleX(1)}.tab:hover{color:var(--text)}
-.bar{display:flex;align-items:center;gap:28px;padding:26px 48px;flex-wrap:wrap;border-bottom:1px solid rgba(186,159,96,.2)}
-.bar .lbl{font-family:'Cormorant SC';font-size:13px;letter-spacing:.24em;color:var(--gold3);margin-right:4px}
-.chip{border:1px solid rgba(138,111,53,.4);padding:9px 16px;min-height:42px;font-size:13px;letter-spacing:.04em;background:none;transition:all .4s var(--ease)}
-.chip.on,.chip:hover{background:var(--ink);color:var(--gold2);border-color:var(--ink)}
-.price{display:flex;align-items:center;gap:14px;font-size:13px}
-.rng{position:relative;width:220px;height:24px}.rng input{position:absolute;inset:0;width:100%;-webkit-appearance:none;appearance:none;background:none;pointer-events:none}
-.rng:before{content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:rgba(138,111,53,.35)}
-.rng .fill{position:absolute;top:10px;height:3px;background:var(--gold)}
-.rng input::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:16px;height:16px;border-radius:50%;background:var(--ivory);border:1px solid var(--gold3);box-shadow:0 0 0 3px rgba(186,159,96,.15)}
-.price output{min-width:190px;font-family:'Cormorant Garamond';font-size:18px;color:var(--text)}
-.sort{margin-left:auto;display:flex;align-items:center;gap:12px}
-.sort select{background:none;border:0;border-bottom:1px solid var(--gold3);padding:8px 24px 8px 0;font-size:14px;appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6' fill='none' stroke='%238a6f35'/%3E%3C/svg%3E") no-repeat right center}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:46px 28px;padding:54px 48px 30px}
-.card{position:relative;display:block}
-.card .ph{position:relative;aspect-ratio:4/5;background:#fff;overflow:hidden;outline:1px solid rgba(186,159,96,.18);outline-offset:-1px;transition:outline-color .6s}
-.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:9%;transition:opacity .8s var(--ease),transform 1.2s var(--ease)}
-.card .ph img.b{opacity:0;object-fit:cover;padding:0}
-.card .ph:before,.card .ph:after{content:"";position:absolute;z-index:2;pointer-events:none}
-.card .ph:before{inset:10px;border:1px solid var(--gold);opacity:0;transform:scale(1.02);transition:all .7s var(--ease)}
-.card .ph:after{top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,236,190,.0) 30%,rgba(255,236,190,.55) 50%,transparent 70%);mix-blend-mode:soft-light;transform:skewX(-14deg)}
-.card:hover .ph:after{animation:glint 1.1s var(--ease)}
-@keyframes glint{to{left:130%}}
-.card:hover .ph:before{opacity:.85;transform:none}
-.card:hover .ph img.a{transform:scale(1.06)}.card.has2:hover .ph img.a{opacity:0}.card.has2:hover .ph img.b{opacity:1;transform:scale(1.03)}
-.card .tag{position:absolute;left:14px;top:14px;z-index:3;font-family:'Cormorant SC';font-size:12px;letter-spacing:.2em;background:var(--ink);color:var(--gold2);padding:6px 10px}
-.card .heart{position:absolute;right:12px;top:12px;z-index:3}
-.card .qv{position:absolute;left:14px;right:14px;bottom:14px;z-index:3;padding:13px;background:rgba(14,11,9,.88);color:var(--gold2);border:0;font-family:'Cormorant SC';letter-spacing:.24em;font-size:14px;transform:translateY(130%);transition:transform .6s var(--ease)}
-.card:hover .qv{transform:none}
-.card .meta{padding:20px 4px 0}
-.card small{font-family:'Cormorant SC';font-size:12px;letter-spacing:.22em;color:var(--gold3)}
-.card h3{font-family:'Cormorant Garamond';font-weight:400;font-size:22px;line-height:1.2;margin:8px 0 12px;min-height:2.4em}
-.card .pr b{font-family:'Cormorant Garamond';font-size:24px;font-weight:500;margin-right:10px}.card .pr s{color:#9a8f7c;font-size:14px}
-.more{display:flex;flex-direction:column;align-items:center;gap:18px;padding:40px 0 110px}
-.more .p{font-size:12px;letter-spacing:.2em;color:var(--mute)}.more .pb{width:220px;height:1px;background:rgba(138,111,53,.25)}.more .pb i{display:block;height:100%;background:var(--gold);transition:width .8s var(--ease)}
-.empty{grid-column:1/-1;text-align:center;padding:80px 0;font-family:'Cormorant Garamond';font-size:26px;color:var(--mute)}
-.qvm{position:fixed;inset:0;z-index:80;display:grid;place-items:center;pointer-events:none}
-.qvm .sh{position:absolute;inset:0;background:rgba(14,11,9,.7);backdrop-filter:blur(6px);opacity:0;transition:opacity .6s}
-.qvm .box{position:relative;width:min(1040px,92vw);display:grid;grid-template-columns:1.1fr 1fr;background:var(--ivory);clip-path:inset(50% 0 50% 0);transition:clip-path .9s var(--ease)}
-.qvm.on{pointer-events:auto}.qvm.on .sh{opacity:1}.qvm.on .box{clip-path:inset(0 0 0 0)}
-.qvm .im{background:#fff;aspect-ratio:1;position:relative}.qvm .im img{width:100%;height:100%;object-fit:contain;padding:8%}
-.qvm .im .th{position:absolute;left:16px;bottom:16px;display:flex;gap:8px}.qvm .im .th button{width:54px;height:54px;border:1px solid rgba(186,159,96,.3);background:#fff;padding:3px}.qvm .im .th button.on{border-color:var(--gold3)}.qvm .im .th img{padding:0}
-.qvm .tx{padding:50px 46px;display:flex;flex-direction:column}
-.qvm h3{font-family:'Cormorant Garamond';font-weight:400;font-size:34px;line-height:1.15;margin:14px 0 18px}
-.qvm .pr b{font-family:'Cormorant Garamond';font-size:32px;font-weight:500;margin-right:12px}.qvm .pr s{color:#9a8f7c}
-.qvm dl{margin:26px 0;display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:13px}.qvm dt{color:var(--mute)}
-.qvm .x{position:absolute;right:18px;top:16px;font-size:30px;background:none;border:0;line-height:1;color:var(--gold3);z-index:2}
-.qvm .act{margin-top:auto;display:flex;gap:12px;flex-wrap:wrap}
-@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.chero .flo{right:4vw;transform:scale(.8);transform-origin:right top}}
-@media(min-width:1700px){.grid{grid-template-columns:repeat(5,1fr)}}@media(min-width:2200px){.grid{grid-template-columns:repeat(6,1fr)}}
-@media(min-width:761px) and (max-width:1023px){.chero{padding:140px 40px 60px}.tabs{top:76px}.bar{padding:22px 40px}.grid{padding:44px 40px;gap:36px 20px}.chero .flo{display:none}.sort{margin-left:0}}
-@media(max-width:360px){.grid{grid-template-columns:1fr 1fr;gap:24px 10px}.card h3{font-size:16px}}
-@media(max-height:500px) and (min-width:600px){.chero{min-height:0;padding:100px 28px 30px}.chero .flo{display:none}.tabs{top:60px}}
-@media(max-width:760px){
- .chero{padding:120px 20px 40px;min-height:auto}.chero .row{flex-direction:column;align-items:flex-start;gap:20px}.chero p{font-size:19px}.chero .cnt{text-align:left}.chero .cnt b{font-size:44px}.chero .flo{display:none}
- .tabs{top:56px}.tabs .in{padding:0 12px}.tab{padding:17px 12px;font-size:14px}.tab:after{left:12px;right:12px}
- .bar{padding:18px 20px;gap:14px}.bar .grp{display:flex;gap:8px;overflow-x:auto;width:100%;padding-bottom:4px}.chip{white-space:nowrap}.price{width:100%;flex-wrap:wrap}.rng{width:100%}.sort{margin-left:0}
- .grid{grid-template-columns:1fr 1fr;gap:30px 12px;padding:28px 12px}.card h3{font-size:17px}.card .pr b{font-size:19px}.card .pr s{display:block;font-size:12px}.card .qv{display:none}.card .heart{width:34px;height:34px;right:8px;top:8px}.card .tag{left:8px;top:8px;font-size:10px}
- .qvm .box{grid-template-columns:1fr;max-height:90vh;overflow:auto}.qvm .tx{padding:28px 22px}
-}
-</style>
-</head><body>
-<div class="cursor"></div>
+<script src="common.js?v=5"></script>
 <header class="nav">
  <ul><li><a href="index.html#story">О бренде</a></li><li><a href="index.html#collections">Коллекции</a></li><li><a href="catalog.html" class="act">Каталог</a></li></ul>
  <a href="index.html" class="logo"><b>ЗАВАРИН</b><small>ювелирный дом</small></a>
  <div class="r"><a class="ph" href="tel:88006008533">8 800 600-85-33</a><a class="ic" href="catalog.html?fav=1"><em>Избранное</em><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 7 4.5c2.1 0 3.6 1.2 5 3 1.4-1.8 2.9-3 5-3 3.6 0 5.6 3.5 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg><i data-fav-count>0</i></a><a class="ic" href="#" onclick="Z.toast('Корзина','макет · '+Z.cart.length+' изд.');return false"><em>Корзина</em><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><i data-cart-count>0</i></a></div>
 </header>
-
-<section class="dark chero">
- <div class="flo" aria-hidden="true"></div>
- <div class="crumbs reveal"><a href="index.html">Главная</a><span>/</span><a>Каталог</a></div>
- <div class="row">
-  <div><h1 class="reveal" data-d=".1">Каталог</h1><p class="reveal" data-d=".2">Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.</p></div>
-  <div class="cnt reveal" data-d=".3"><b id="total">0</b>изделий в подборке</div>
+<style>
+body{background:#0e0b09;color:#d8ccb4}
+.card .pw{position:relative;overflow:hidden}
+.cb{position:relative;height:clamp(420px,62vh,640px);overflow:hidden;display:flex;align-items:flex-end}
+.cb picture,.cb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cb img{transition:opacity .9s var(--ease),transform 1.6s var(--ease);transform:scale(1.04)}.cb.in img{transform:none}
+.cb:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,11,9,.88),rgba(14,11,9,.35) 55%,rgba(14,11,9,.05)),linear-gradient(0deg,rgba(14,11,9,.9),transparent 40%)}
+.cb .W{position:relative;z-index:2;width:100%;padding-bottom:clamp(36px,5vw,70px)}
+.crumbs{font-size:12px;color:#a8987a;letter-spacing:.06em;margin-bottom:22px}.crumbs a{color:#cbbd9f}
+.cb .eb{font-family:'Cormorant SC';letter-spacing:.3em;color:var(--gold);font-size:13px}
+.cb h1{font-family:'Cormorant Garamond';font-weight:300;font-size:clamp(42px,6.4vw,104px);line-height:.95;color:#f3ead9;margin:12px 0 16px}.cb h1 em{color:var(--gold2)}
+.cb p{max-width:520px;color:#d8ccb4;font-size:15px;line-height:1.7}
+.W{max-width:1680px;margin-left:auto;margin-right:auto;padding-left:clamp(16px,3.4vw,56px);padding-right:clamp(16px,3.4vw,56px)}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:22px 0 0}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;font:inherit;font-size:13px;color:#cbbd9f;background:none;border:1px solid rgba(201,169,110,.18);padding:10px 16px;cursor:pointer;transition:.3s;white-space:nowrap}
+.tabs button sup{color:var(--gold);margin-left:4px;font-size:10px}.tabs button:hover{border-color:var(--gold)}.tabs button.on{background:var(--gold);color:#140f0b;border-color:var(--gold)}.tabs button.on sup{color:#140f0b}
+.fb{position:sticky;top:var(--navh,72px);z-index:20;background:rgba(14,11,9,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,169,110,.14);margin-top:18px}
+.fb .W{display:flex;align-items:center;gap:14px;min-height:62px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.fbtn{font:inherit;font-size:13px;letter-spacing:.06em;color:#f3ead9;background:none;border:1px solid rgba(201,169,110,.35);padding:10px 18px;cursor:pointer;display:inline-flex;gap:10px;align-items:center}
+.fbtn b{background:var(--gold);color:#140f0b;border-radius:20px;font-size:11px;min-width:18px;height:18px;display:inline-grid;place-items:center;padding:0 5px}.fbtn b:empty{display:none}
+.cnt{color:#a8987a;font-size:13px}.cnt b{color:#f3ead9;font-weight:500}
+.fb .sp{flex:1}
+.sort{font:inherit;font-size:13px;color:#f3ead9;background:transparent;border:1px solid rgba(201,169,110,.2);padding:10px 12px}.sort option{background:#140f0b}
+.dens{display:flex;border:1px solid rgba(201,169,110,.2)}.dens button{background:none;border:0;padding:9px 11px;cursor:pointer;color:#7d705c;display:grid;place-items:center}.dens button.on{color:var(--gold)}
+.dens svg{width:18px;height:14px;fill:currentColor}
+.chips{display:flex;gap:8px;flex-wrap:wrap;width:100%}.chips:empty{display:none}
+.chip{font:inherit;font-size:12px;color:#f3ead9;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.3);padding:6px 10px 6px 12px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}.chip:after{content:"×";color:var(--gold);font-size:14px}
+.chip.clr{background:none;border-color:transparent;text-decoration:underline;color:#a8987a}.chip.clr:after{content:""}
+.grid{display:grid;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));gap:clamp(14px,1.8vw,28px) clamp(10px,1.4vw,22px);padding:clamp(24px,3vw,44px) 0 clamp(60px,8vw,120px)}
+.card{position:relative;min-width:0}
+.card .ph{position:relative;aspect-ratio:4/5;background:#f6f3ee;overflow:hidden;display:block}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s var(--ease),transform 1.2s var(--ease)}
+.card .ph .b{opacity:0}
+@media(hover:hover){.card:hover .ph .b{opacity:1}.card:hover .ph .a{opacity:0}.card:hover .ph img{transform:scale(1.04)}}
+.card .tag{position:absolute;left:12px;top:12px;z-index:2;font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:#140f0b;color:var(--gold2);padding:5px 9px}
+.card .fav{position:absolute;right:10px;top:10px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.85);border:0;display:grid;place-items:center;cursor:pointer}
+.card .fav svg{width:18px;height:18px;fill:none;stroke:#140f0b;stroke-width:1.5}.card .fav.on svg{fill:#b8955a;stroke:#b8955a}
+.qa{position:absolute;left:0;right:0;bottom:0;z-index:3;background:rgba(20,15,11,.92);backdrop-filter:blur(8px);padding:12px;transform:translateY(101%);transition:transform .5s var(--ease)}
+.qa small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a8987a;margin-bottom:8px}
+.qa .sz{display:flex;gap:6px;flex-wrap:wrap}.qa .sz button{font:inherit;font-size:12px;color:#f3ead9;background:none;border:1px solid rgba(201,169,110,.35);min-width:38px;padding:7px 8px;cursor:pointer}.qa .sz button:hover{background:var(--gold);color:#140f0b}
+.qa .one{width:100%;font:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:#140f0b;border:0;padding:11px;cursor:pointer}
+@media(hover:hover){.card:hover .qa,.card:focus-within .qa{transform:none}}
+html.touch .qa{display:none}
+.card h3{font-family:'Cormorant Garamond';font-weight:400;font-size:clamp(15px,1.15vw,18px);line-height:1.3;color:#f3ead9;margin:14px 0 6px}
+.card h3 a{color:inherit}.card .meta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7d705c}
+.card .pr{font-size:15px;color:var(--gold2);margin-top:6px}.card .pr s{color:#7d705c;font-size:12px;margin-left:8px}
+.edt{grid-column:span 2;position:relative;overflow:hidden;min-height:100%;display:flex;align-items:flex-end;background:#1b1510}
+.edt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}.edt:hover img{transform:scale(1.04)}
+.edt:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,11,9,.9),transparent 60%)}
+.edt div{position:relative;z-index:2;padding:clamp(20px,2.6vw,40px)}.edt small{font-family:'Cormorant SC';letter-spacing:.26em;color:var(--gold);font-size:12px}
+.edt h3{font-family:'Cormorant Garamond';font-weight:300;font-size:clamp(26px,2.6vw,44px);color:#f3ead9;margin:8px 0}.edt p{color:#d8ccb4;font-size:14px;line-height:1.6;max-width:420px}.edt u{display:inline-block;margin-top:14px;color:var(--gold2);font-size:13px;letter-spacing:.1em}
+.sk .ph{background:linear-gradient(100deg,#1b1510 30%,#2a2119 50%,#1b1510 70%);background-size:300% 100%;animation:sh 1.3s linear infinite}
+.sk i{display:block;height:12px;margin-top:14px;background:#1f1913;width:80%}.sk i+i{width:40%}
+@keyframes sh{to{background-position:-150% 0}}
+.empty{grid-column:1/-1;text-align:center;padding:80px 20px}.empty h3{font-family:'Cormorant Garamond';font-weight:300;font-size:36px;color:#f3ead9}.empty p{color:#a8987a;margin:10px 0 24px}
+.dr{position:fixed;inset:0;z-index:200;visibility:hidden}.dr.on{visibility:visible}
+.dr .ov{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:.4s}.dr.on .ov{opacity:1}
+.dr .pn{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);background:#140f0b;border-left:1px solid rgba(201,169,110,.2);transform:translateX(100%);transition:transform .55s var(--ease);display:flex;flex-direction:column}
+.dr.on .pn{transform:none}
+.dr .hd{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;border-bottom:1px solid rgba(201,169,110,.14)}
+.dr .hd h2{font-family:'Cormorant Garamond';font-weight:400;font-size:28px;color:#f3ead9}.dr .x{background:none;border:0;color:#f3ead9;font-size:28px;cursor:pointer;line-height:1}
+.dr .bd{flex:1;overflow:auto;padding:10px 26px;overscroll-behavior:contain}
+.fg{padding:20px 0;border-bottom:1px solid rgba(201,169,110,.1)}.fg h4{font-family:'Cormorant SC';letter-spacing:.22em;color:var(--gold);font-size:13px;font-weight:400;margin-bottom:14px}
+.fg .op{display:flex;flex-wrap:wrap;gap:8px}.fg .op button{font:inherit;font-size:13px;color:#d8ccb4;background:none;border:1px solid rgba(201,169,110,.22);padding:9px 14px;cursor:pointer}.fg .op button sup{color:#7d705c;font-size:10px;margin-left:3px}
+.fg .op button.on{border-color:var(--gold);color:#140f0b;background:var(--gold)}.fg .op button.on sup{color:#140f0b}.fg .op button:disabled{opacity:.3;cursor:default}
+.dr .ft{display:flex;gap:10px;padding:18px 26px;border-top:1px solid rgba(201,169,110,.14)}.dr .ft button{flex:1;font:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:15px;cursor:pointer;border:1px solid var(--gold);background:none;color:#f3ead9}.dr .ft .go{background:var(--gold);color:#140f0b}
+.grip{display:none}
+@media(max-width:1100px){.grid{--cols:3!important}.dens [data-c="4"]{display:none}}
+@media(max-width:700px){
+ .grid{--cols:var(--mcols,2)!important}.dens [data-c="3"],.dens [data-c="4"]{display:none}.dens [data-c="1"]{display:grid!important}
+ .edt{grid-column:1/-1;min-height:300px}
+ .cb{height:clamp(380px,72vh,560px)}
+ .fb .W{gap:10px}.cnt{order:5;width:100%;display:none}
+ .dr .pn{top:auto;left:0;width:100%;max-height:86vh;border-left:0;border-top:1px solid rgba(201,169,110,.25);border-radius:18px 18px 0 0;transform:translateY(100%)}
+ .grip{display:block;width:44px;height:4px;border-radius:4px;background:rgba(201,169,110,.4);margin:10px auto 0}
+ .dr .hd{padding:12px 20px}.dr .bd{padding:0 20px}.dr .ft{padding:14px 20px calc(14px + env(safe-area-inset-bottom))}
+ .card h3{font-size:14px}.card .pr{font-size:13px}.card .fav{width:32px;height:32px}
+}
+.dens [data-c="1"]{display:none}
+@media(max-width:380px){.sort{max-width:132px}}
+html.rm .card .ph img,html.rm .qa,html.rm .dr .pn,html.rm .cb img{transition:none!important}html.rm .sk .ph{animation:none}
+</style>
+<section class="cb" id="banner"></section>
+<div class="W"><div class="tabs" id="tabs" role="tablist"></div></div>
+<div class="fb"><div class="W">
+ <button class="fbtn" id="fopen" aria-haspopup="dialog">Фильтры <b id="fn"></b></button>
+ <span class="cnt" id="cnt" aria-live="polite"></span><span class="sp"></span>
+ <select class="sort" id="sort" aria-label="Сортировка"><option value="pop">Популярные</option><option value="new">Сначала новинки</option><option value="asc">Цена по возрастанию</option><option value="desc">Цена по убыванию</option></select>
+ <div class="dens" role="group" aria-label="Плотность сетки">
+  <button data-c="1" aria-label="1 колонка"><svg viewBox="0 0 18 14"><rect width="18" height="14"/></svg></button>
+  <button data-c="2" aria-label="2 колонки"><svg viewBox="0 0 18 14"><rect width="8" height="14"/><rect x="10" width="8" height="14"/></svg></button>
+  <button data-c="3" aria-label="3 колонки"><svg viewBox="0 0 18 14"><rect width="5" height="14"/><rect x="6.5" width="5" height="14"/><rect x="13" width="5" height="14"/></svg></button>
+  <button data-c="4" aria-label="4 колонки"><svg viewBox="0 0 18 14"><rect width="3.5" height="14"/><rect x="4.8" width="3.5" height="14"/><rect x="9.7" width="3.5" height="14"/><rect x="14.5" width="3.5" height="14"/></svg></button>
  </div>
-</section>
-<nav class="tabs"><div class="in" id="tabs"></div></nav>
-<div class="bar">
- <span class="lbl">Материал</span><div class="grp" id="mats"></div>
- <div class="price"><span class="lbl">Цена</span><div class="rng"><div class="fill"></div><input type="range" id="pmin"><input type="range" id="pmax"></div><output id="pout"></output></div>
- <div class="sort"><span class="lbl">Сортировка</span><select id="sort"><option value="pop">По порядку сайта</option><option value="asc">Цена: по возрастанию</option><option value="desc">Цена: по убыванию</option><option value="sale">Размер скидки</option></select></div>
-</div>
-<main class="grid" id="grid"></main>
-<div class="more"><div class="p" id="pinfo"></div><div class="pb"><i id="pbar"></i></div><button class="btn" id="loadmore">Показать ещё</button></div>
-<div class="qvm" id="qvm"><div class="sh"></div><div class="box"><button class="x" aria-label="Закрыть">×</button><div class="im"><img alt=""><div class="th"></div></div><div class="tx"></div></div></div>
+ <div class="chips" id="chips"></div>
+</div></div>
+<main class="W"><div class="grid" id="grid"></div></main>
+<div class="dr" id="dr" role="dialog" aria-modal="true" aria-label="Фильтры"><div class="ov" data-close></div><div class="pn"><i class="grip"></i>
+ <div class="hd"><h2>Фильтры</h2><button class="x" data-close aria-label="Закрыть">×</button></div><div class="bd" id="fbody"></div>
+ <div class="ft"><button id="freset">Сбросить</button><button class="go" id="fgo">Показать</button></div></div></div>
 <footer class="f"><div class="g">
  <div><a href="index.html" class="logo" style="text-align:left;color:var(--ivory)"><b style="padding-left:0">ЗАВАРИН</b><small>ювелирный дом</small></a><p style="margin-top:22px;max-width:300px;line-height:1.7">Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.</p></div>
  <div><h5>Каталог</h5><a href="catalog.html?cat=crosses">Кресты</a><a href="catalog.html?cat=rings">Кольца</a><a href="catalog.html?cat=icons">Иконы</a><a href="catalog.html?cat=chains">Цепи</a><a href="catalog.html?cat=bracelets">Браслеты</a></div>
  <div><h5>Покупателям</h5><a href="https://zavarin.art/delivery/" target="_blank" rel="noopener">Доставка и оплата</a><a href="https://zavarin.art/guarantee/" target="_blank" rel="noopener">Гарантии</a><a href="https://zavarin.art/care/" target="_blank" rel="noopener">Уход за изделиями</a></div>
  <div><h5>Контакты</h5><a href="tel:88006008533">8 800 600-85-33</a><a>Галерея: Москва, Большой Ордынский пер., 4, стр. 4</a><a>Кострома, ул. Коммунаров, 40</a></div>
 </div><div class="b"><span>© 2013—2026, Ювелирный дом ЗАВАРИН</span><span>Концепт · макет. Данные и фото — zavarin.art</span><span>Стоимость изделия может быть скорректирована с учётом стоимости металла по курсу ЦБ РФ.</span></div></footer>
-
-<script src="catalog.js?v=3"></script>
+<script src="catalog.js?v=5"></script>
 </body></html>

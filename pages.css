@@ -61,3 +61,4 @@ html{-webkit-text-size-adjust:100%}body{overflow-x:clip}
 @media(min-width:1921px){html{font-size:112%}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01s!important;transition-duration:.01s!important;scroll-behavior:auto!important}}
 .cursor{display:none!important}
+@media(max-width:1240px) and (min-width:1024px){.nav .r .ph{display:none}header.nav ul{gap:24px}header.nav{padding-left:32px;padding-right:32px}}
