@@ -8,7 +8,7 @@ grid.innerHTML=Array.from({length:8},()=>'<div class="card sk"><div class="ph"><
 const D=await Z.load();const P=D.products;
 if(!Z.CAPTURE)await new Promise(r=>setTimeout(r,350));
 const CN={all:'Все изделия',crosses:'Кресты',rings:'Кольца',icons:'Иконы',chains:'Цепи',bracelets:'Браслеты',cords:'Шнуры',chetki:'Чётки',aksessuary:'Аксессуары'};
-const BN={all:['individual','Каталог','Изделия <em>во Славу Божию</em>','Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.'],
+const BN={all:['women','Каталог','Изделия <em>во Славу Божию</em>','Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.'],
  crosses:['women','Нательные кресты','Подлинная <em>красота</em>','Вся красота православной веры – в женской коллекции ЗАВАРИН.'],
  rings:['rings','Кольца','То самое <em>кольцо</em>','Выбирайте то, что вам по душе, в галерее православных колец бренда.'],
  icons:['icons-family','Иконы','Ваша семейная <em>ценность</em>','Иконы, которые будут передаваться из поколения в поколение.'],
@@ -36,9 +36,9 @@ function card(p){const o=(p.options||[])[0];const qa=o?`<small>${o.label}</small
  return `<article class="card" data-flip-id="${p.id}"><div class="pw"><a class="ph" href="product.html?id=${p.id}" aria-label="${p.name}">${tag(p)?`<span class="tag">${tag(p)}</span>`:''}<img class="a" src="${p.images[0]}" alt="${p.name}" loading="lazy"><img class="b" src="${p.images[1]||p.images[0]}" alt="" loading="lazy"></a>
  <button class="fav ${Z.favs.has(p.id)?'on':''}" data-fav="${p.id}" aria-label="В избранное">${Z.heart}</button><div class="qa">${qa}</div></div>
  <div class="meta">${p.catName}${p.material?' · '+p.material:''}</div><h3><a href="product.html?id=${p.id}">${p.name}</a></h3><div class="pr">${Z.fmt(p.price)}${p.old?`<s>${Z.fmt(p.old)}</s>`:''}</div></article>`;}
-const ED=[['Индивидуальные работы','Ваша история в драгоценной форме','Средний срок изготовления заказа — 10 рабочих дней.','img/ed/individual-2.jpg','index.html#story'],
- ['Галерея в Москве','Ждём вас в Москве','Большой Ордынский пер., 4, стр. 4 · ежедневно 9:00–21:00','img/ed/gallery-moscow.jpg','index.html#contacts'],
- ['Создание работ','Рука мастера','Моделирование, ручная гравировка, фрезеровка и ручная обработка.','img/craft-hands.jpg','index.html']];
+const ED=[['Индивидуальные работы','Ваша история в драгоценной форме','Размер, материал, вставки, молитвы и лики святых — по вашему пожеланию.','img/ed/agate-craft.jpg','index.html#story'],
+ ['Галерея в Москве','Ждём вас в Москве','Большой Ордынский пер., 4, стр. 4 · ежедневно 9:00–21:00','img/ed/gallery-moscow.jpg','index.html#gallery'],
+ ['Создание работ','Рука мастера','Моделирование, ручная гравировка, фрезеровка и ручная обработка.','img/craft-hands.jpg','index.html#craft']];
 const edt=e=>`<a class="edt" data-flip-id="ed-${e[1]}" href="${e[4]}"><img src="${e[3]}" alt="" loading="lazy"><div><small>${e[0]}</small><h3>${e[1]}</h3><p>${e[2]}</p><u>Подробнее →</u></div></a>`;
 function list(){let L=P.filter(p=>fit(p));if(S.sort==='asc')L.sort((a,b)=>a.price-b.price);if(S.sort==='desc')L.sort((a,b)=>b.price-a.price);if(S.sort==='new')L.sort((a,b)=>b.home-a.home);return L;}
 function chips(){const c=[];S.cat!=='all'&&c.push(['cat',S.cat,CN[S.cat]]);['m','s','p'].forEach(k=>S[k].forEach(v=>c.push([k,v,v])));
