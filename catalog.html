@@ -9,6 +9,9 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="common.js"></script>
 <style>
+@view-transition{navigation:auto}
+::view-transition-group(pimg){animation-duration:.75s;animation-timing-function:cubic-bezier(.7,0,.2,1)}
+
 .chero{padding:170px 48px 70px;min-height:56vh;display:flex;flex-direction:column;justify-content:flex-end}
 .chero h1{font-family:'Cormorant SC';font-weight:400;font-size:clamp(64px,8vw,132px);letter-spacing:.1em;line-height:.9;margin:26px 0 20px;background:linear-gradient(175deg,#f6e3b4,#d8bd7e 40%,#9b7e40 65%,#e8d29c 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .chero .row{display:flex;justify-content:space-between;align-items:end;gap:40px;position:relative;z-index:1}
@@ -18,13 +21,13 @@
 .chero .flo img{position:absolute;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
 .tabs{position:sticky;top:66px;z-index:30;background:rgba(245,240,230,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .tabs .in{display:flex;gap:6px;padding:0 48px;overflow-x:auto;scrollbar-width:none}
-.tab{position:relative;padding:22px 18px;font-family:'Cormorant SC';font-size:16px;letter-spacing:.2em;color:var(--mute);white-space:nowrap;background:none;border:0;transition:color .4s}
+.tab{position:relative;padding:22px 18px;min-height:48px;font-family:'Cormorant SC';font-size:16px;letter-spacing:.2em;color:var(--mute);white-space:nowrap;background:none;border:0;transition:color .4s}
 .tab sup{font-family:Manrope;font-size:10px;letter-spacing:0;margin-left:4px;color:var(--gold)}
 .tab:after{content:"";position:absolute;left:18px;right:18px;bottom:-1px;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .6s var(--ease)}
 .tab.on{color:var(--text)}.tab.on:after{transform:scaleX(1)}.tab:hover{color:var(--text)}
 .bar{display:flex;align-items:center;gap:28px;padding:26px 48px;flex-wrap:wrap;border-bottom:1px solid rgba(186,159,96,.2)}
 .bar .lbl{font-family:'Cormorant SC';font-size:13px;letter-spacing:.24em;color:var(--gold3);margin-right:4px}
-.chip{border:1px solid rgba(138,111,53,.4);padding:9px 16px;font-size:13px;letter-spacing:.04em;background:none;transition:all .4s var(--ease)}
+.chip{border:1px solid rgba(138,111,53,.4);padding:9px 16px;min-height:42px;font-size:13px;letter-spacing:.04em;background:none;transition:all .4s var(--ease)}
 .chip.on,.chip:hover{background:var(--ink);color:var(--gold2);border-color:var(--ink)}
 .price{display:flex;align-items:center;gap:14px;font-size:13px}
 .rng{position:relative;width:220px;height:24px}.rng input{position:absolute;inset:0;width:100%;-webkit-appearance:none;appearance:none;background:none;pointer-events:none}
@@ -69,7 +72,11 @@
 .qvm dl{margin:26px 0;display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:13px}.qvm dt{color:var(--mute)}
 .qvm .x{position:absolute;right:18px;top:16px;font-size:30px;background:none;border:0;line-height:1;color:var(--gold3);z-index:2}
 .qvm .act{margin-top:auto;display:flex;gap:12px;flex-wrap:wrap}
-@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.chero .flo{right:4vw;transform:scale(.8);transform-origin:right top}}
+@media(min-width:1700px){.grid{grid-template-columns:repeat(5,1fr)}}@media(min-width:2200px){.grid{grid-template-columns:repeat(6,1fr)}}
+@media(min-width:761px) and (max-width:1023px){.chero{padding:140px 40px 60px}.tabs{top:76px}.bar{padding:22px 40px}.grid{padding:44px 40px;gap:36px 20px}.chero .flo{display:none}.sort{margin-left:0}}
+@media(max-width:360px){.grid{grid-template-columns:1fr 1fr;gap:24px 10px}.card h3{font-size:16px}}
+@media(max-height:500px) and (min-width:600px){.chero{min-height:0;padding:100px 28px 30px}.chero .flo{display:none}.tabs{top:60px}}
 @media(max-width:760px){
  .chero{padding:120px 20px 40px;min-height:auto}.chero .row{flex-direction:column;align-items:flex-start;gap:20px}.chero p{font-size:19px}.chero .cnt{text-align:left}.chero .cnt b{font-size:44px}.chero .flo{display:none}
  .tabs{top:56px}.tabs .in{padding:0 12px}.tab{padding:17px 12px;font-size:14px}.tab:after{left:12px;right:12px}
@@ -101,7 +108,7 @@
  <div class="sort"><span class="lbl">Сортировка</span><select id="sort"><option value="pop">По порядку сайта</option><option value="asc">Цена: по возрастанию</option><option value="desc">Цена: по убыванию</option><option value="sale">Размер скидки</option></select></div>
 </div>
 <main class="grid" id="grid"></main>
-<div class="more"><div class="p" id="pinfo"></div><div class="pb"><i id="pbar"></i></div><button class="btn" id="loadmore" data-magnetic>Показать ещё</button></div>
+<div class="more"><div class="p" id="pinfo"></div><div class="pb"><i id="pbar"></i></div><button class="btn" id="loadmore">Показать ещё</button></div>
 <div class="qvm" id="qvm"><div class="sh"></div><div class="box"><button class="x" aria-label="Закрыть">×</button><div class="im"><img alt=""><div class="th"></div></div><div class="tx"></div></div></div>
 <footer class="f"><div class="g">
  <div><a href="index.html" class="logo" style="text-align:left;color:var(--ivory)"><b style="padding-left:0">ЗАВАРИН</b><small>ювелирный дом</small></a><p style="margin-top:22px;max-width:300px;line-height:1.7">Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.</p></div>

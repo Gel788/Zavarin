@@ -36,7 +36,7 @@ $('#mats').addEventListener('click',e=>{const t=e.target.closest('.chip');if(!t)
 [mn,mx].forEach(i=>{i.addEventListener('input',function(){pr.call(this)});i.addEventListener('change',()=>render());});
 $('#sort').addEventListener('change',e=>{S.sort=e.target.value;render();});
 $('#loadmore').addEventListener('click',()=>{S.shown+=12;render();});
-grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;const p=P.find(x=>x.id===c.dataset.id);
+grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;if(!e.target.closest('[data-fav],[data-qv]')){const im=c.querySelector('img.a');if(im)im.style.viewTransitionName='pimg';}const p=P.find(x=>x.id===c.dataset.id);
  if(e.target.closest('[data-fav]')){e.preventDefault();Z.toggleFav(p.id,e.target.closest('[data-fav]'));if(S.fav)render();}
  else if(e.target.closest('[data-qv]')){e.preventDefault();qv(p);}});
 // quick view
@@ -45,7 +45,7 @@ function qv(p){const im=M.querySelector('.im>img');im.src=p.images[0];
  M.querySelector('.th').innerHTML=p.images.slice(0,5).map((s,k)=>`<button class="${k?'':'on'}" data-s="${s}"><img src="${s}" alt=""></button>`).join('');
  const sp=p.specs.slice(0,5).map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
  M.querySelector('.tx').innerHTML=`<small class="sc" style="font-size:13px;letter-spacing:.24em;color:var(--gold3)">${p.catName} · арт. ${p.art}</small><h3>${p.name}</h3><div class="pr"><b>${Z.fmt(p.price)}</b>${p.old?`<s>${Z.fmt(p.old)}</s>`:''}</div><dl>${sp}</dl>
- <div class="act"><a class="btn solid" href="product.html?id=${p.id}" data-magnetic>Подробнее</a><button class="btn" data-cart>В корзину</button></div>`;
+ <div class="act"><a class="btn solid" href="product.html?id=${p.id}">Подробнее</a><button class="btn" data-cart>В корзину</button></div>`;
  M.querySelector('[data-cart]').onclick=()=>{Z.cart.push(p.id);Z.save();Z.toast('Добавлено в корзину','макет · без оформления заказа');};
  M.classList.add('on');Z.bind(M);}
 M.addEventListener('click',e=>{const b=e.target.closest('.th button');if(b){M.querySelectorAll('.th button').forEach(x=>x.classList.toggle('on',x===b));M.querySelector('.im>img').src=b.dataset.s;}

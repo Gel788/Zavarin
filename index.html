@@ -7,8 +7,8 @@
 :root{--ink:#0e0b09;--velvet:#15100c;--ivory:#f5f0e6;--ivory2:#ece4d4;--gold:#ba9f60;--gold2:#d8bd7e;--gold3:#8a6f35;--text:#2c2c2c;--mute:#7d7364;--line:rgba(186,159,96,.38);--ease:cubic-bezier(.7,0,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
-body{background:var(--ink);color:var(--ivory);font-family:Manrope,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;cursor:none}
-.capture body{cursor:auto}a{color:inherit;text-decoration:none;cursor:none}button{cursor:none}
+body{background:var(--ink);color:var(--ivory);font-family:Manrope,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;cursor:auto}
+.capture body{cursor:auto}a{color:inherit;text-decoration:none;cursor:pointer}button{cursor:pointer}
 img{display:block;max-width:100%}
 #gl{position:fixed;inset:0;width:100vw;height:100vh;z-index:0}
 main{position:relative;z-index:1}
@@ -151,7 +151,7 @@ h2 em{font-style:italic;color:var(--gold3)}
 .cgrid p{font-family:'Cormorant Garamond';font-size:24px;line-height:1.4;margin-top:14px;color:#efe5d2}
 .cgrid .s{font-family:Manrope;font-size:13px;color:#a99d86;margin-top:10px;line-height:1.7}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:80px;padding:30px 48px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.1em;color:#8f846f}
-@media(max-width:760px){
+@media(max-width:1023px) and (min-height:501px),(max-width:600px){
  .cgrid,.cgal{max-width:none}
  .wrap,.hero .copy{padding:0 20px}header.nav{padding:18px 20px;grid-template-columns:1fr auto}header.nav ul,.nav .r .ph-n{display:none}.logo{text-align:left}.logo b{font-size:20px}
  .hero .copy{left:0;right:0;top:auto;bottom:150px;transform:none}.hero h1{font-size:15vw;letter-spacing:.06em}.hero .lead{font-size:20px}.hero .cta{flex-direction:column;align-items:flex-start;gap:10px;margin-top:26px}.btn{padding:15px 24px;font-size:14px}
@@ -175,9 +175,19 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:8
 .feat .pr b{font-family:'Cormorant Garamond';font-size:28px;font-weight:500;color:var(--gold2);margin-right:12px}.feat .pr s{color:#7d715d;font-size:15px}
 .feat .more{display:inline-block;margin-top:16px;color:#efe2c4;text-decoration:none;font-size:12px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--gold);padding-bottom:6px}
 .feat .bar{height:1px;background:rgba(186,159,96,.25);margin-top:20px}.feat .bar i{display:block;height:100%;width:25%;background:var(--gold);transition:transform .6s}
-@media(max-width:760px){.feat{left:20px;right:20px;width:auto;bottom:24px}.feat h3{font-size:24px}.feat .fis{height:170px}}
+@media(max-width:1023px) and (min-height:501px),(max-width:600px){.feat{left:20px;right:20px;width:auto;bottom:24px}.feat h3{font-size:24px}.feat .fis{height:170px}}
 .capture .feat .fi,.capture .feat .bar i{transition:none}
-</style></head><body>
+/* responsive polish */
+html,body{overflow-x:clip}.step,.steps{min-width:0}
+.cards>*{min-width:0}.card h4{overflow-wrap:anywhere}
+@media(max-width:1023px) and (min-width:601px) and (min-height:501px){.hero h1{font-size:12vw}.wrap{padding:0 40px}.hero .copy{padding:0 40px}header.nav{padding:22px 40px}.hero .lead{font-size:24px;max-width:560px}.hero .cta{flex-direction:row}}
+@media(max-width:360px){.cards{grid-template-columns:1fr}.hero h1{font-size:16vw}}
+@media(max-width:600px) and (max-height:700px){.hero .eyebrow{display:none}.hero .lead{font-size:17px}.hero .copy{bottom:120px}.hero .cta{margin-top:18px}}
+@media(max-height:500px) and (min-width:601px){header.nav{padding:14px 28px}header.nav ul{display:none}.hero .copy{left:28px;max-width:46vw;transform:translateY(-46%)}.hero h1{font-size:13vh;margin:10px 0 12px}.hero .lead{font-size:16px}.hero .cta{margin-top:16px}.btn{padding:12px 20px;font-size:13px}.hero .meta{display:none}.hero .eyebrow{font-size:12px}.feat{bottom:16px;width:320px}.feat .fis{height:150px}.feat h3{font-size:22px}}
+@media(min-width:1921px){.wrap{max-width:2100px;margin-left:auto;margin-right:auto}.hero .copy{left:max(48px,calc((100vw - 2300px)/2))}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01s!important;transition-duration:.01s!important}}
+
+.cursor{display:none!important}</style></head><body>
 <canvas id="gl"></canvas><div class="cursor"></div>
 <svg width="0" height="0" style="position:absolute"><defs>
  <symbol id="ornL" viewBox="196 0 200 60"><g fill="none" stroke="#ba9f60" stroke-width="1">
@@ -218,7 +228,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:8
   <div class="eyebrow rv">Ювелирный дом · Кострома · с 2013 года</div>
   <h1 data-split="chars">Заварин</h1>
   <p class="lead rv">Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.</p>
-  <div class="cta rv"><a href="catalog.html" class="btn solid" data-magnetic>Каталог изделий</a><a href="#collections" class="btn" data-magnetic>Коллекции</a></div>
+  <div class="cta rv"><a href="catalog.html" class="btn solid">Каталог изделий</a><a href="#collections" class="btn">Коллекции</a></div>
  </div>
  <div class="feat"><div class="idx"><b>01</b> / 04 · Избранные изделия</div><div class="fis"><div class="fi on"><small>Золото · эбен</small><h3>Четырехконечный крест из золота и эбена</h3><div class="pr"><b>328 345 ₽</b><s>338 500 ₽</s></div><a href="product.html?id=krest-07-21-07550-00-1" class="more">Подробнее <span>→</span></a></div><div class="fi"><small>Золото · агат · изумруды</small><h3>Лепестковый крест из золота с агатом и изумрудами</h3><div class="pr"><b>128 625 ₽</b><s>132 600 ₽</s></div><a href="product.html?id=krest-07-23-07630-00-5" class="more">Подробнее <span>→</span></a></div><div class="fi"><small>Золото · агат</small><h3>Кольцо из золота и агата «Хризма»</h3><div class="pr"><b>114 270 ₽</b><s>117 800 ₽</s></div><a href="product.html?id=koltso-02-22-00034-7-1" class="more">Подробнее <span>→</span></a></div><div class="fi"><small>Дерево · финифть · золото</small><h3>Деревянная икона с ликами из финифти и золота</h3><div class="pr"><b>431 650 ₽</b><s>445 000 ₽</s></div><a href="product.html?id=ikona-06-25-01460-00-1" class="more">Подробнее <span>→</span></a></div></div><div class="bar"><i></i></div></div>
  <div class="meta rv"><div><b>500+</b>уникальных моделей</div><div class="m2">Листайте</div><div class="m3">Галерея в Москве<br>Большой Ордынский пер., 4, стр. 4</div></div>
@@ -286,7 +296,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:8
   <div class="frame fade"><div class="mask ph"><img src="img/gold-ring.jpg" alt="Изделие ЗАВАРИН"></div></div>
   <div class="fade"><div class="eyebrow">Индивидуальные работы</div><h3 style="margin-top:22px">Ваша история<br><em style="color:var(--gold3)">в драгоценной форме</em></h3>
    <p>Наше вдохновение и гордость. Эти уникальные изделия хранят ваши особые истории, воспоминания, чувства и смыслы. А мы придаём им искусную форму. Среднее время изготовления заказа — 10 рабочих дней.</p>
-   <a href="#contacts" class="btn dark" data-magnetic>Обсудить заказ</a></div>
+   <a href="#contacts" class="btn dark">Обсудить заказ</a></div>
  </div>
 </div></section>
 
