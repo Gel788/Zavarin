@@ -7,7 +7,7 @@ const metal=[p.metal||sp['Металл'],sp['Проба']].filter(Boolean).join(
 const share='<svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 $('#bc').innerHTML=`<a href="index.html">Главная</a><i>›</i><a href="catalog.html">Каталог</a><i>›</i><a href="catalog.html?cat=${p.cat}">${p.catName}</a><i>›</i><span>${p.name}</span>`;
 const metaH=`<div class="meta"><span>Арт. ${p.art}</span>${metal?`<span>${metal}</span>`:''}</div>`;
-$('#mtitle').innerHTML=`<h1>${p.name}</h1>${metaH}`;
+$('#mtitle').innerHTML=`<p class="h1m">${p.name}</p>${metaH}`;
 /* gallery */
 const all=[p.cut,...imgs];
 $('#slides').innerHTML=all.map((s,k)=>`<button class="sl${k?'':' v'}" data-k="${k}" aria-label="Открыть фото ${k+1}"><img src="${s}"${p.hd&&!/\/cut\//.test(s)?Z.ss(p.hd.i[p.images.indexOf(s)],'ph',s):(p.hd&&s===p.cut?Z.ss(p.hd.c,'cut',s):'')} sizes="(max-width:1024px) 100vw, 55vw" alt="${p.name}${k?' — фото '+k:''}" ${k>1?'loading="lazy"':'decoding="async"'}><span class="zi" aria-hidden="true">⤢</span></button>`).join('');
