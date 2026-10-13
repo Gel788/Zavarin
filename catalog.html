@@ -3,20 +3,27 @@
 <title>Каталог — ЗАВАРИН</title>
 <meta name="description" content="Ювелирный дом ЗАВАРИН, Кострома, с 2013 года. Авторские православные кресты, иконы, кольца из золота и серебра с натуральными камнями и ценными породами дерева.">
 <meta name="theme-color" content="#0b0b0c"><link rel="icon" href="img/og-logo.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Onest:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="lux.css?v=7"><link rel="stylesheet" href="cat.css?v=7">
+<!--FONTS--><link rel="preload" href="fonts/PlayfairDisplay-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/InterTight-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css?v=8"><!--/FONTS-->
+<link rel="stylesheet" href="lux.css?v=8"><link rel="stylesheet" href="cat.css?v=8">
 <script>document.documentElement.classList.remove('no-js')</script>
-</head><body>
-<a class="skip" href="#main">К содержанию</a>
-<header class="hd s" id="hd" data-solid="1"><div class="wrap">
+</head><body data-solid="1">
+<!--HDR--><a class="skip" href="#main">К содержанию</a>
+<header class="hd" id="hd"><div class="wrap">
  <a href="index.html" class="logo" aria-label="ЗАВАРИН — на главную">ЗАВАРИН</a>
- <nav aria-label="Основное меню"><a href="catalog.html?cat=crosses">Кресты</a><a href="catalog.html?cat=icons">Иконы</a><a href="catalog.html?cat=rings">Кольца</a><a href="catalog.html">Каталог</a><a href="#gallery">Галерея</a></nav>
- <div class="r"><a class="tel" href="tel:88006008533">8 800 600-85-33</a><a class="fav" href="catalog.html?fav=1">Избранное<b data-fav-count></b></a><button type="button" class="cartb" data-cart-open aria-haspopup="dialog">Корзина<b data-cart-count></b></button><button class="burg" id="burg" aria-label="Открыть меню" aria-expanded="false" aria-controls="mm"><i></i></button></div>
+ <nav class="nv" aria-label="Основное меню"><ul>
+  <li class="has-mg"><button type="button" class="nl" aria-expanded="false" aria-controls="mg">Каталог</button>
+   <div class="mg" id="mg"><div class="wrap mg-g"><div class="mg-l"><p class="lbl">Коллекции</p><a href="catalog.html?cat=crosses" class="mg-i"><span class="mg-im"><img src="img/lux/mega/crosses.webp" alt="" width="180" height="180" loading="lazy"></span><span>Кресты</span></a><a href="catalog.html?cat=icons" class="mg-i"><span class="mg-im"><img src="img/lux/mega/icons.webp" alt="" width="180" height="180" loading="lazy"></span><span>Иконы</span></a><a href="catalog.html?cat=rings" class="mg-i"><span class="mg-im"><img src="img/lux/mega/rings.webp" alt="" width="180" height="180" loading="lazy"></span><span>Кольца</span></a><a href="catalog.html?cat=bracelets" class="mg-i"><span class="mg-im"><img src="img/lux/mega/bracelets.webp" alt="" width="180" height="180" loading="lazy"></span><span>Браслеты</span></a><a href="catalog.html?cat=chetki" class="mg-i"><span class="mg-im"><img src="img/lux/mega/chetki.webp" alt="" width="180" height="180" loading="lazy"></span><span>Чётки</span></a><a href="catalog.html?cat=chains" class="mg-i"><span class="mg-im"><img src="img/lux/mega/chains.webp" alt="" width="180" height="180" loading="lazy"></span><span>Цепи</span></a></div>
+    <a class="mg-f" href="product.html?id=krest-07-23-07630-00-5"><img src="img/lux/hero-cross.webp" alt="" width="509" height="824" loading="lazy"><span class="lbl">Изделие в кадре</span><b>Лепестковый крест из золота с агатом и изумрудами</b><span>128 625 ₽</span></a>
+    <div class="mg-r"><a class="lk" href="catalog.html">Весь каталог →</a><a class="lk" href="catalog.html?fav=1">Избранное</a></div></div></div></li>
+  <li><a class="nl" href="brand.html">О бренде</a></li><li><a class="nl" href="index.html#craft">Мастерская</a></li><li><a class="nl" href="blog.html">Журнал</a></li><li><a class="nl" href="contacts.html">Контакты</a></li></ul></nav>
+ <div class="r"><a class="tel nl" href="tel:88006008533">8 800 600-85-33</a><a class="fav nl" href="account.html" aria-label="Личный кабинет">Кабинет</a><button type="button" class="cartb nl" data-cart-open aria-haspopup="dialog">Корзина<b data-cart-count></b></button><button class="burg" id="burg" aria-label="Открыть меню" aria-expanded="false" aria-controls="mm"><i></i></button></div>
 </div></header>
 <div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Меню"><button class="x" id="mmx" aria-label="Закрыть меню">×</button>
- <a href="catalog.html?cat=crosses">Кресты</a><a href="catalog.html?cat=icons">Иконы</a><a href="catalog.html?cat=rings">Кольца</a><a href="catalog.html?cat=bracelets">Браслеты</a><a href="catalog.html">Весь каталог</a><a href="#gallery">Галерея</a>
- <p><a href="tel:88006008533" style="font:500 16px var(--sans)">8 800 600-85-33</a>Москва, Большой Ордынский пер., 4, стр. 4</p></div>
+ <div class="mm-c"><a href="catalog.html?cat=crosses">Кресты</a><a href="catalog.html?cat=icons">Иконы</a><a href="catalog.html?cat=rings">Кольца</a><a href="catalog.html?cat=bracelets">Браслеты</a><a href="catalog.html?cat=chetki">Чётки</a><a href="catalog.html?cat=chains">Цепи</a></div>
+ <div class="mm-l"><a href="catalog.html">Весь каталог</a><a href="brand.html">О бренде</a><a href="blog.html">Журнал</a><a href="contacts.html">Контакты</a><a href="delivery.html">Доставка и оплата</a><a href="account.html">Личный кабинет</a></div>
+ <p><a href="tel:88006008533">8 800 600-85-33</a>Москва, Большой Ордынский пер., 4, стр. 4</p></div><!--/HDR-->
 <main id="main">
 <section class="cbn" id="banner"></section>
 <div class="wrap"><div class="tabs" id="tabs" role="group" aria-label="Категории"></div></div>
@@ -37,11 +44,11 @@
  <div class="dh"><h2>Фильтры</h2><button class="x" data-close aria-label="Закрыть">×</button></div><div class="bd" id="fbody"></div>
  <div class="ft"><button id="freset">Сбросить</button><button class="go" id="fgo">Показать</button></div></div></div>
 </main>
-<footer class="ft"><div class="wrap"><div class="g12">
- <div><a href="index.html" class="logo" style="color:#ece7dd">ЗАВАРИН</a><p style="margin-top:18px;max-width:28ch">Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.</p></div>
+<!--FTR--><footer class="ft"><div class="wrap"><div class="g12">
+ <div><a href="index.html" class="logo">ЗАВАРИН</a><p style="margin-top:18px;max-width:28ch">Авторские православные изделия из драгоценных металлов, натуральных камней и ценных пород дерева.</p></div>
  <div><h4>Каталог</h4><a href="catalog.html?cat=crosses">Кресты</a><a href="catalog.html?cat=icons">Иконы</a><a href="catalog.html?cat=rings">Кольца</a><a href="catalog.html?cat=chains">Цепи</a><a href="catalog.html?cat=bracelets">Браслеты</a></div>
- <div><h4>Покупателям</h4><a href="https://zavarin.art/delivery/" rel="noopener">Доставка и оплата</a><a href="https://zavarin.art/guarantee/" rel="noopener">Гарантии</a><a href="https://zavarin.art/blog/" rel="noopener">Блог</a></div>
- <div><h4>Контакты</h4><a href="tel:88006008533">8 800 600-85-33</a><p style="padding:5px 0">Москва, Большой Ордынский пер., 4, стр. 4</p><p style="padding:5px 0">Кострома, ул. Коммунаров, 40</p></div>
-</div><div class="bt"><span>© Ювелирный дом ЗАВАРИН</span><span>Концепт-редизайн · фото zavarin.art · <a href="index_v5.html" style="display:inline">предыдущая версия</a></span></div></div></footer>
-<script src="common.js?v=7"></script><script src="lux.js?v=7"></script><script src="catalog.js?v=7"></script>
+ <div><h4>Покупателям</h4><a href="delivery.html">Доставка и оплата</a><a href="guarantee.html">Гарантии</a><a href="care.html">Уход за изделиями</a><a href="account.html">Личный кабинет</a></div>
+ <div><h4>Дом</h4><a href="brand.html">О бренде</a><a href="blog.html">Журнал</a><a href="contacts.html">Контакты</a><a href="tel:88006008533">8 800 600-85-33</a></div>
+</div><div class="bt"><span>© Ювелирный дом ЗАВАРИН</span><span>Концепт-редизайн · данные и фото zavarin.art · <a href="index_v5.html" style="display:inline">предыдущая версия</a></span></div></div></footer><!--/FTR-->
+<script src="common.js?v=8"></script><script src="lux.js?v=8"></script><script src="catalog.js?v=8"></script>
 </body></html>
