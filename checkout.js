@@ -1,0 +1,26 @@
+(()=>{const $=s=>document.querySelector(s),get=k=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}};
+const fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0|,/g,' ')+' ₽',E=x=>String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let P=[],L=[];
+const sum=()=>{const ids=get('zcart');L=ids.map(id=>P.find(p=>p.id===id)).filter(Boolean);
+ $('#sum').innerHTML=L.length?`<h2>Ваш заказ</h2><ul>${L.map(p=>`<li><img src="${p.images[0]}" alt=""><span>${E(p.name)}<br><small style="color:var(--stone)">Арт. ${p.art}</small></span><span>${fmt(p.price)}</span></li>`).join('')}</ul><div class="tot"><span>Итого</span><span>${fmt(L.reduce((a,p)=>a+p.price,0))}</span></div><p>Стоимость может быть скорректирована с учётом стоимости металла по курсу ЦБ РФ. Доставка — по тарифам транспортной компании.</p>`:`<h2>Корзина пуста</h2><p style="font-size:15px">Добавьте изделия из <a href="catalog.html" style="text-decoration:underline">каталога</a>.</p>`};
+fetch('products.json').then(r=>r.json()).then(d=>{P=d.products;sum()});
+const f=$('#cof'),adrw=$('#adrw'),adr=$('#adr');
+const syncDl=()=>{const pick=f.dl.value==='Самовывоз';adrw.hidden=pick;adr.required=!pick};f.addEventListener('change',e=>{if(e.target.name==='dl')syncDl()});syncDl();
+const ph=$('#ph');ph.addEventListener('input',()=>{let d=ph.value.replace(/\D/g,'');if(d.startsWith('8'))d='7'+d.slice(1);if(d&&!d.startsWith('7'))d='7'+d;d=d.slice(0,11);let o='+7';if(d.length>1)o+=' '+d.slice(1,4);if(d.length>4)o+=' '+d.slice(4,7);if(d.length>7)o+='-'+d.slice(7,9);if(d.length>9)o+='-'+d.slice(9,11);ph.value=d?o:''});
+const err=(el,m)=>{const w=el.closest('.fl');if(!w)return;w.classList.toggle('bad',!!m);w.querySelector('.er').textContent=m||'';el.setAttribute('aria-invalid',!!m)};
+const check=()=>{let ok=true,first=null;const t=(el,m)=>{err(el,m);if(m){ok=false;first=first||el}};
+ t($('#n'),$('#n').value.trim().length<2?'Укажите имя':'');t(ph,ph.value.replace(/\D/g,'').length!==11?'Введите телефон в формате +7 XXX XXX-XX-XX':'');
+ const em=$('#em').value.trim();t($('#em'),em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)?'Проверьте e-mail':'');
+ if(adr.required)t(adr,adr.value.trim().length<8?'Укажите адрес или пункт выдачи':'');else err(adr,'');
+ const ag=$('#ag');$('#ager').textContent=ag.checked?'':'Нужно согласие на обработку данных';if(!ag.checked){ok=false;first=first||ag}
+ if(!L.length){ok=false;alert('Корзина пуста');}if(first)first.focus();return ok};
+f.addEventListener('blur',e=>{const w=e.target.closest('.fl');if(w&&w.classList.contains('bad'))check()},true);
+f.addEventListener('submit',e=>{e.preventDefault();if(!check())return;
+ const no='Z'+Date.now().toString().slice(-7),dl=f.dl.value;
+ const body=`Заявка ${no}\n\n${L.map((p,i)=>`${i+1}. ${p.name} (арт. ${p.art}) — ${fmt(p.price)}`).join('\n')}\nИтого: ${fmt(L.reduce((a,p)=>a+p.price,0))}\n\nИмя: ${$('#n').value}\nТелефон: ${ph.value}\nE-mail: ${$('#em').value||'—'}\nПолучение: ${dl}${dl==='Самовывоз'?' (Кострома, ул. Коммунаров, 40)':'\nАдрес: '+adr.value}\nКомментарий: ${$('#cm').value||'—'}`;
+ const orders=get('zorders');orders.unshift({no,date:new Date().toLocaleDateString('ru-RU'),items:L.map(p=>p.id),total:L.reduce((a,p)=>a+p.price,0),dl,status:'Ожидает подтверждения менеджером'});localStorage.setItem('zorders',JSON.stringify(orders.slice(0,20)));
+ localStorage.setItem('zcart','[]');window.LUX&&LUX.counts();
+ $('#okm').href='mailto:support@zavarin.art?subject='+encodeURIComponent('Заказ с сайта '+no)+'&body='+encodeURIComponent(body);
+ $('#okt').textContent=`Номер заявки ${no}. Чтобы передать её в ювелирный дом, отправьте письмо (откроется ваш почтовый клиент с готовым текстом) или позвоните 8 800 600-85-33. Менеджер подтвердит наличие, стоимость и способ оплаты в течение следующего рабочего дня.`;
+ $('#co').hidden=true;document.querySelector('.pgh').hidden=true;$('#okv').hidden=false;scrollTo(0,0);$('#okh').focus()});
+})();

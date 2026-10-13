@@ -167,3 +167,4 @@ html.mo .hero.go .tx>.lbl,html.mo .hero.go .tx>.lead,html.mo .hero.go .tx>.act,h
 html.mo .hero.go .tx>.lbl{transition-delay:.5s}html.mo .hero.go .tx>.lead{transition-delay:1.3s}html.mo .hero.go .tx>.act{transition-delay:1.5s}html.mo .hero.go figcaption{transition-delay:2s}html.mo .hero.go .meta{transition-delay:2.2s}
 .hero .h1 .ln>span{transition-duration:1.3s}
 html.mo .hero.cv .art img{opacity:0}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}.btn.ghost:hover{background:var(--ink);color:var(--ivory)}
