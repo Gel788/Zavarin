@@ -158,3 +158,4 @@ html.rm .pmac{height:auto}html.rm .pmac-st{position:relative}
 @media (max-width:760px){.cine-cat .cbn{min-height:90svh}.cbn-art{top:11%;bottom:56%}}
 .cv-macro{top:auto;bottom:clamp(40px,10vh,110px);transform:none;z-index:3;text-shadow:0 2px 24px rgba(0,0,0,.85),0 0 60px rgba(0,0,0,.6)}
 .cv-macro{max-width:min(620px,42vw)}@media (max-width:760px){.cv-macro{max-width:none;right:var(--pad)}}
+.cv-macro{padding:26px 30px 30px;margin-left:-30px;background:rgba(11,11,12,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);text-shadow:none}@media (max-width:760px){.cv-macro{margin-left:-14px;padding:18px 14px}}
