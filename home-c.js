@@ -17,15 +17,15 @@ const mob=matchMedia('(max-width:760px)').matches,hm=matchMedia('(max-width:768p
 const F=$$('.cv-f'),obj=$('#cvobj'),L=$$('.cv-word .lt'),caps=$$('.cv-cap'),n=$('#cvn'),st=$('.cv-st');
 if(hm){document.documentElement.classList.add('cvm');
  const l=$('.cv-l');if(l){const w=document.createElement('section');w.className='cv-lm';w.innerHTML='<div class="wrap"></div>';w.firstChild.appendChild(l);$('.cv').after(w)}
- const F=$$('.cv-f'),obj=$('#cvobj'),caps=$$('.cv-cap'),pi=$('.cv-pi');let lk=0;
+ const F=$$('.cv-f'),obj=$('#cvobj'),caps=$$('.cv-cap'),pi=$('.cv-pi'),LW=$$('.cv-word .lt');let lk=0;
  gsap.set(F,{force3D:true});
  const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'.cv',start:'top top',end:'bottom bottom',scrub:.4,onUpdate:s=>{const p=s.progress,k=p<.3?0:p<.58?1:2;if(k!==lk){lk=k;caps.forEach((c,i)=>c.classList.toggle('on',i===k))}}}});
- tl.to(obj,{scale:1.12,duration:1},0)
+ tl.to(LW,{xPercent:i=>(i-3)*30,opacity:.35,duration:3},0).to(obj,{scale:1.12,duration:1},0)
   .to(F[0],{opacity:0,scale:.92,rotate:-4,duration:.6},.9).fromTo(F[1],{opacity:0,scale:1.08,rotate:4},{opacity:1,scale:1,rotate:0,duration:.6},.9)
   .to(obj,{scale:1.2,duration:1},1.2)
   .to(F[1],{opacity:0,scale:.9,duration:.6},2.1).fromTo(F[2],{opacity:0,scale:1.15,rotate:-8},{opacity:1,scale:.9,rotate:0,duration:.7},2.1)
   .to(pi,{opacity:0,y:-16,duration:.5},3.1).to('.cv-cap',{opacity:0,duration:.4},3.1)
-  .to(obj,{scale:.55,y:'-6svh',opacity:0,duration:.9,ease:'power2.in'},3.2).to('.cv-top,.cv-word',{opacity:0,duration:.5},3.3);
+  .to(obj,{scale:.55,y:'-6svh',opacity:0,duration:.9,ease:'power2.in'},3.2).to('.cv-top',{opacity:0,duration:.5},3.3).to(LW,{opacity:0,duration:.5},3.3);
 }else{st.insertAdjacentHTML('beforeend','<span class="cv-fade" aria-hidden="true" style="position:absolute;inset:0;background:#f3eee4;opacity:0;pointer-events:none"></span>');
 gsap.set(obj,{xPercent:-50,yPercent:-50,left:'50%',top:mob?'40%':'50%',transform:'none'});gsap.set(obj,{xPercent:-50,yPercent:-50});
 let lk=-1;const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'.cv',start:'top top',end:'bottom bottom',scrub:.7,onUpdate:s=>{const p=s.progress,k=p<.31?0:p<.5?1:2;if(k!==lk){lk=k;caps.forEach((c,i)=>c.classList.toggle('on',i===k));n.textContent='0'+(k+1)}}}});
