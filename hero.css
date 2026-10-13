@@ -35,3 +35,11 @@
 @media (max-height:520px) and (orientation:landscape){.qh-top{display:none}.qh-w{top:42%;font-size:15vw}.qh-x{height:62vh;top:42%}.qh-h{font-size:28px}.qh-pi small{display:none}.qh-bot{bottom:14px}.act{margin-top:12px}}
 @media (prefers-reduced-motion:reduce){.qh{height:auto}.qh-st{position:relative}}
 @media (max-width:768px) and (min-height:700px){.qh-pi{display:block!important;position:absolute;left:0;right:0;top:auto;bottom:calc(100% + 6svh);text-align:center;max-width:none;padding:0 24px}.qh-pi small{display:none}.qh-pi .fh{font-size:17px;margin:0 0 4px}.qh-pi .pr{justify-content:center;margin:0 0 6px}.qh-pi .pr b{font-size:20px}}
+
+/* v22b: no foreground cross — wordmark is the hero */
+.qh-w{top:43%!important;font-size:clamp(96px,20.5vw,400px)!important;letter-spacing:.015em!important;padding-left:.015em!important}
+.qh-w span{-webkit-text-stroke:1px rgba(214,189,138,.45)!important}
+.qh-gr{background:radial-gradient(90% 70% at 50% 45%,rgba(7,7,7,.62),rgba(7,7,7,.86) 100%),linear-gradient(180deg,rgba(7,7,7,.2),rgba(7,7,7,0) 40%,rgba(7,7,7,.75) 100%)!important}
+.qh-bot{justify-content:flex-start}
+@media (max-width:768px){.qh-w{top:41%!important;font-size:20vw!important}.qh-bot{bottom:clamp(28px,7svh,64px)}}
+@media (max-height:520px) and (orientation:landscape){.qh-w{top:40%!important;font-size:17vw!important}}
