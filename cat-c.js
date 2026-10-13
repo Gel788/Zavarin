@@ -19,7 +19,7 @@ function prep(){if(C.rm)return;ScrollTrigger.getAll().forEach(t=>{const tr=t.tri
  });
  if(first&&now.length)gsap.from(now,{y:90,opacity:0,clipPath:'inset(20% 0 0 0)',duration:1.3,ease:'expo.out',stagger:.07,delay:.35,clearProps:'clipPath,transform,opacity'});
  if(first&&later.length){gsap.set(later,{y:90,opacity:0,clipPath:'inset(20% 0 0 0)'});ScrollTrigger.batch(later,{start:'top 94%',once:true,onEnter:b=>gsap.to(b,{y:0,opacity:1,clipPath:'inset(0% 0 0 0)',duration:1.2,ease:'expo.out',stagger:.08,overwrite:true,clearProps:'clipPath,transform'})})}
- if(first)requestAnimationFrame(()=>ScrollTrigger.refresh());first=false;}
+ if(first)requestAnimationFrame(()=>(window.ZR?ZR():ScrollTrigger.refresh()));first=false;}
 new MutationObserver(()=>{clearTimeout(prep.t);prep.t=setTimeout(prep,120)}).observe(grid,{childList:true});
 fetch('products.json').then(r=>r.json()).then(d=>{P=d.products;deco()});
 const fbH=()=>{const h=$('#hd'),f=$('.fb');document.documentElement.style.setProperty('--fbb',((h?h.offsetHeight:60)+(f?f.offsetHeight:0)-1)+'px')};fbH();addEventListener('resize',fbH);setTimeout(fbH,600);
@@ -31,7 +31,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const TH={all:'krest-07-21-07550-00-1',crosses:'krest-07-23-07630-00-5',rings:'koltso-02-22-00034-7-1',icons:'ikona-06-25-01460-00-1',chains:'tsep-04-20-21208525-1',bracelets:'braslet-03-10-02103-1',cords:'shnur-05-12-03011-00-1',chetki:'chyetki-11-12-00001-40-1',aksessuary:'zaponki-20-32-00002-00-1'};
 let P=[];const cut=p=>'img/cine/m/'+p.cut.split('/').pop().replace('.png','.webp'),big=p=>'img/cine/cut/'+p.cut.split('/').pop().replace('.png','.webp');
 const tabs=$('#tabs');tabs.classList.add('tx');const deco=()=>{};
-const grid=$('#grid');const cols=()=>{const n=getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;grid.classList.toggle('wide',n>=3);grid.classList.toggle('one',n<2)};new MutationObserver(cols).observe(grid,{childList:true,attributes:true,attributeFilter:['style']});addEventListener('resize',cols);cols();
+const grid=$('#grid');const cols=()=>{const n=getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;grid.classList.toggle('wide',n>=3);grid.classList.toggle('one',n<2)};let cq=0;new MutationObserver(()=>{if(!cq)cq=requestAnimationFrame(()=>{cq=0;cols()})}).observe(grid,{childList:true,attributes:true,attributeFilter:['style']});addEventListener('resize',cols);cols();
 /* quick view */
 document.body.insertAdjacentHTML('beforeend','<div class="qvm" id="qvm" role="dialog" aria-modal="true" aria-labelledby="qvh" hidden><div class="qv-ov" data-x></div><div class="qv-p"><button class="qv-x" data-x aria-label="Закрыть">×</button><div class="qv-g"><div class="qv-st" id="qvst"></div><div class="qv-th" id="qvth" role="group" aria-label="Фотографии"></div></div><div class="qv-i" id="qvi"></div></div></div>');
 const m=$('#qvm');let last=null,cur=null;

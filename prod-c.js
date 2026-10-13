@@ -32,7 +32,7 @@ const go=(P)=>{const sl=$$('.sl');if(!sl.length||!$('#info .price')||!$$('#tps .
  gsap.from('#info>*',{y:30,opacity:0,duration:1.1,stagger:.05,ease:'expo.out',delay:.15,clearProps:'all'});
  gsap.from('.gal .slides',{clipPath:'inset(8% 8% 8% 8%)',duration:1.5,ease:'expo.out',clearProps:'clipPath'});
  gsap.from('.rail button',{y:16,opacity:0,stagger:.05,duration:.9,ease:'expo.out',delay:.3,clearProps:'all'});
- gsap.from('.ps-im',{clipPath:'inset(0 0 100% 0)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'.pstory',start:'top 75%',once:true}});
+ const later=()=>{gsap.from('.ps-im',{clipPath:'inset(0 0 100% 0)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'.pstory',start:'top 75%',once:true}});
  gsap.from('.ps-t>*',{y:30,opacity:0,stagger:.08,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.pstory',start:'top 70%',once:true}});
  const mi=$('.pmac-im'),mimg=$('.pmac-im img');
  gsap.timeline({scrollTrigger:{trigger:'.pmac',start:'top top',end:'bottom bottom',scrub:.6}})
@@ -40,5 +40,5 @@ const go=(P)=>{const sl=$$('.sl');if(!sl.length||!$('#info .price')||!$$('#tps .
   .fromTo(mimg,{scale:2.2,yPercent:6},{scale:1,yPercent:0,ease:'power2.inOut',duration:1.4},0)
   .fromTo('.pmac-q',{opacity:0,y:30},{opacity:1,y:0,duration:.4},.7);
 
- setTimeout(()=>ScrollTrigger.refresh(),300);};
+ window.ZR&&ZR()};requestAnimationFrame(()=>setTimeout(later,0));};
 fetch('products.json').then(r=>r.json()).then(d=>go(d.products)).catch(()=>go([]));})();

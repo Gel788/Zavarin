@@ -238,3 +238,11 @@ html.zv-cov:after{animation:zvSafe .3s 2.6s forwards!important}
 .cur .sp-w{font:400 clamp(32px,4.6vw,62px)/1 var(--cap);color:#ece7dd;margin:6px 0 0}
 .cur .sp-s{font:500 10px/1 var(--sans);color:#8c867b;letter-spacing:.32em}
 .cur .sp-x{width:44px;height:70px}
+/* v13 */
+#grid>.card{content-visibility:auto;contain-intrinsic-size:auto 520px}
+footer.ft,#sides,section.band.rel,.band[aria-label="Информация"]{content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* v13: no heavy filters site-wide */
+*,*:before,*:after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.hd.s{background:rgba(17,17,19,.94)!important}.mg{background:rgba(17,17,19,.985)!important}.cine-cat .fb{background:rgba(243,238,228,.985)!important}
+.cv-f img,.mq img,.cbn-art img,.pmac-im img,.obj img,.sl.v img,.cine-prod .gal.v11 .sl.v img,.qv-st img.ct,#tabs.pv .tb-im img,.cine-cat .card .ph .a{filter:none!important}
+.crumbs{font:500 10px/1.4 var(--sans)!important;letter-spacing:.2em;text-transform:uppercase;color:#8c867b!important}.crumbs a{color:inherit!important;text-decoration:none}.crumbs a:hover{color:var(--gold,#b08d57)!important}
