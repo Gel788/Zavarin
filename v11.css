@@ -176,3 +176,4 @@ html.rm .cine-prod .gal.v11 .sl{transition:none}
 @media (max-width:860px){.gal.v11 .slides{margin:0!important}}
 @media (max-width:860px){.cine-prod .gal.v11 .arr.p{left:6px}.cine-prod .gal.v11 .arr.n{right:6px}}
 .qv-x{color:#1b1a18!important}@media (max-width:760px){.qv-x{color:#ece7dd!important}}
+.cine-cat .card .ph{background:transparent!important}
