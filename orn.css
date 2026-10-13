@@ -1,0 +1,29 @@
+/* ZAVARIN v20 — engraved ornament system (static SVG backgrounds; no blend/filters) */
+:root{--o:img/orn2/}
+/* dark sections: vine border on top, partial guilloché rosette bleeding off edge, wave micro-tile */
+.sec.dark,.band.dark,.cv-mq,.stz,.e404{background-image:url(img/orn2/vine-g.svg),url(img/orn2/rosette-g.svg),url(img/orn2/wave-g.svg)!important;background-repeat:repeat-x,no-repeat,repeat!important;background-size:200px 48px,min(980px,120vw),240px 60px!important;background-position:0 14px,calc(100% + 34vw) -30%,0 0!important;background-blend-mode:normal!important}
+.sec.dark:nth-of-type(even),.band.dark:nth-of-type(even){background-image:url(img/orn2/interlace-g.svg),url(img/orn2/rosette-g.svg),url(img/orn2/hatch-g.svg)!important;background-size:64px 32px,min(980px,120vw),12px 12px!important;background-position:0 16px,-34vw 130%,0 0!important}
+.cv-h-sec{background-image:url(img/orn2/wave-g.svg)!important;background-repeat:repeat!important;background-size:240px 60px!important}
+.stz{background-position:0 14px,-30vw 50%,0 0!important}
+.e404{background-position:0 90px,calc(100% + 18vw) 50%,0 0!important;background-size:200px 48px,min(1100px,140vw),240px 60px!important}
+/* footer */
+.ft{background-image:url(img/orn2/interlace-g.svg),url(img/orn2/rosette-g.svg),url(img/orn2/hatch-g.svg)!important;background-repeat:repeat-x,no-repeat,repeat!important;background-size:64px 32px,1100px,12px 12px!important;background-position:0 0,50% calc(100% + 560px),0 0!important}
+.mm{background-image:url(img/orn2/rosette-g.svg)!important;background-repeat:no-repeat!important;background-size:min(900px,130vw)!important;background-position:calc(100% + 40vw) 110%!important}
+/* ivory sections: eight-pointed cross lattice, interlace border, partial rosette */
+main>.sec:not(.dark):not(.cv-q),main>.band:not(.dark),.gfb{background-image:url(img/orn2/interlace-i.svg),url(img/orn2/rosette-i.svg),url(img/orn2/lattice-i.svg);background-repeat:repeat-x,no-repeat,repeat;background-size:64px 32px,min(860px,110vw),120px 120px;background-position:0 10px,-26vw -20%,0 0}
+main>.sec:not(.dark):not(.cv-q):nth-of-type(odd){background-image:url(img/orn2/vine-i.svg),url(img/orn2/rosette-i.svg),url(img/orn2/hatch-i.svg);background-size:200px 48px,min(860px,110vw),12px 12px;background-position:0 10px,calc(100% + 30vw) 120%,0 0}
+.fx-sec{background-image:url(img/orn2/lattice-i.svg)!important;background-size:120px 120px!important;background-repeat:repeat!important}
+.cv-q{background-image:url(img/orn2/rosette-i.svg);background-repeat:no-repeat;background-size:min(900px,120vw);background-position:calc(100% + 30vw) 50%}
+/* page heads */
+.pgh{background-image:url(img/orn2/hatch-i.svg);background-size:12px 12px}
+.pgh:before{background:url(img/orn2/vine-i.svg) 0 50%/200px 48px repeat-x!important;height:48px!important;bottom:8px!important;opacity:1!important}
+.pgh:after{background:url(img/orn2/rosette-i.svg) center/contain no-repeat!important;opacity:1!important;width:760px!important;height:760px!important;right:-300px!important;top:-260px!important}
+/* ornament behind section titles */
+.sh,.stz-hd,.cv-ht,.gfb-g>div:first-child{background:url(img/orn2/medal-i.svg) -40px 50%/560px 150px no-repeat}
+.dark .sh,.stz-hd,.cv-ht{background-image:url(img/orn2/medal-g.svg)}
+/* filigree corners on panels/cards */
+.box,.side,.cd,.sum,.fx-e{background-image:url(img/orn2/corner-i.svg),url(img/orn2/corner2-i.svg);background-repeat:no-repeat;background-size:96px 96px;background-position:0 0,100% 100%}
+.dark .box,.dark .side,.dark .cd{background-image:url(img/orn2/corner-g.svg),url(img/orn2/corner2-g.svg)}
+/* slow scroll rotation of big rosette (desktop, motion OK, supporting browsers only) */
+@supports (animation-timeline:view()){@media (min-width:1025px) and (prefers-reduced-motion:no-preference){.pgh:after{animation:ornr linear both;animation-timeline:view();will-change:transform}@keyframes ornr{from{transform:rotate(-8deg)}to{transform:rotate(14deg)}}}}
+@media (max-width:760px){.pgh:after{width:520px!important;height:520px!important;right:-260px!important;top:-200px!important}.sh,.stz-hd,.cv-ht{background-size:420px 120px}.box,.side,.cd,.sum,.fx-e{background-size:64px 64px}}
