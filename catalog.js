@@ -61,7 +61,7 @@ $$('.dens button').forEach(b=>b.onclick=()=>{const c=+b.dataset.c;if(innerWidth<
 $('#chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;if(b.dataset.clr!==undefined)return clr();const k=b.dataset.ck;if(k==='cat')set(()=>S.cat='all',1);else set(()=>S[k].delete(b.dataset.cv));};
 const clr=()=>set(()=>{S.m.clear();S.s.clear();S.p.clear();S.cat='all';},1);
 grid.addEventListener('click',e=>{const f=e.target.closest('[data-fav]'),a=e.target.closest('[data-add]'),c=e.target.closest('[data-clr]');
- if(f){Z.toggleFav(f.dataset.fav,f);}if(a){Z.cart.push(a.dataset.add);Z.save();Z.toast('Добавлено в корзину',a.dataset.v?'Размер '+a.dataset.v:'макет');}if(c)clr();});
+ if(f){Z.toggleFav(f.dataset.fav,f);}if(a){Z.cart.push(a.dataset.add);Z.save();Z.toast('Добавлено в корзину',a.dataset.v?'Размер '+a.dataset.v:'');}if(c)clr();});
 const dr=$('#dr');let last;const open=()=>{last=document.activeElement;dr.classList.add('on');Z.lenis&&Z.lenis.stop();document.body.style.overflow='hidden';setTimeout(()=>$('#fbody button:not(:disabled)')?.focus(),50);};
 const close=()=>{dr.classList.remove('on');Z.lenis&&Z.lenis.start();document.body.style.overflow='';last&&last.focus();};
 $('#fopen').onclick=open;dr.addEventListener('click',e=>{if(e.target.closest('[data-close]'))close();});$('#fgo').onclick=close;

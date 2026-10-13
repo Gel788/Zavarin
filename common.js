@@ -8,7 +8,7 @@ window.Z={CAPTURE,
  save(){localStorage.setItem('zfav',JSON.stringify([...this.favs]));localStorage.setItem('zcart',JSON.stringify(this.cart));this.counts();},
  counts(){document.querySelectorAll('[data-fav-count]').forEach(e=>e.textContent=this.favs.size);document.querySelectorAll('[data-cart-count]').forEach(e=>e.textContent=this.cart.length);},
  toggleFav(id,el){this.favs.has(id)?this.favs.delete(id):this.favs.add(id);this.save();if(el){el.classList.toggle('on',this.favs.has(id));el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
-  this.toast(this.favs.has(id)?'Добавлено в избранное':'Удалено из избранного','макет');},
+  this.toast(this.favs.has(id)?'Добавлено в избранное':'Удалено из избранного','');},
  toast(msg,sub){let t=document.querySelector('.toast');if(!t){t=document.createElement('div');t.className='toast';document.body.appendChild(t);}
   t.innerHTML=`<b>${msg}</b><span>${sub||''}</span>`;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2600);},
  heart:'<svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 7 4.5c2.1 0 3.6 1.2 5 3 1.4-1.8 2.9-3 5-3 3.6 0 5.6 3.5 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>',
