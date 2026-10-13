@@ -39,7 +39,6 @@ const go=(P)=>{const sl=$$('.sl');if(!sl.length||!$('#info .price')||!$$('#tps .
   .fromTo(mi,{clipPath:'circle(9% at 50% 46%)'},{clipPath:'circle(75% at 50% 50%)',ease:'power2.inOut',duration:1},0)
   .fromTo(mimg,{scale:2.2,yPercent:6},{scale:1,yPercent:0,ease:'power2.inOut',duration:1.4},0)
   .fromTo('.pmac-q',{opacity:0,y:30},{opacity:1,y:0,duration:.4},.7);
- const g=$('#rel');const hz=()=>{if(!g.children.length)return setTimeout(hz,80);const dist=()=>Math.max(0,g.scrollWidth-g.parentElement.clientWidth);if(mob||dist()<40)return;
-  gsap.to(g,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:rel,pin:true,start:'top top',end:()=>'+='+dist(),scrub:.6,invalidateOnRefresh:true}});ScrollTrigger.refresh()};hz();
+
  setTimeout(()=>ScrollTrigger.refresh(),300);};
 fetch('products.json').then(r=>r.json()).then(d=>go(d.products)).catch(()=>go([]));})();

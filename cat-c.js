@@ -19,8 +19,8 @@ function prep(){if(C.rm)return;ScrollTrigger.getAll().forEach(t=>{const tr=t.tri
  });
  if(first&&now.length)gsap.from(now,{y:90,opacity:0,clipPath:'inset(20% 0 0 0)',duration:1.3,ease:'expo.out',stagger:.07,delay:.35,clearProps:'clipPath,transform,opacity'});
  if(first&&later.length){gsap.set(later,{y:90,opacity:0,clipPath:'inset(20% 0 0 0)'});ScrollTrigger.batch(later,{start:'top 94%',once:true,onEnter:b=>gsap.to(b,{y:0,opacity:1,clipPath:'inset(0% 0 0 0)',duration:1.2,ease:'expo.out',stagger:.08,overwrite:true,clearProps:'clipPath,transform'})})}
- first=false;requestAnimationFrame(()=>ScrollTrigger.refresh());}
-new MutationObserver(()=>{clearTimeout(prep.t);prep.t=setTimeout(prep,30)}).observe(grid,{childList:true});
+ if(first)requestAnimationFrame(()=>ScrollTrigger.refresh());first=false;}
+new MutationObserver(()=>{clearTimeout(prep.t);prep.t=setTimeout(prep,120)}).observe(grid,{childList:true});
 fetch('products.json').then(r=>r.json()).then(d=>{P=d.products;deco()});
 const fbH=()=>{const h=$('#hd'),f=$('.fb');document.documentElement.style.setProperty('--fbb',((h?h.offsetHeight:60)+(f?f.offsetHeight:0)-1)+'px')};fbH();addEventListener('resize',fbH);setTimeout(fbH,600);
 if(!C.rm)setTimeout(prep,60);

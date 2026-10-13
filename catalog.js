@@ -34,7 +34,7 @@ function fbody(){const g=(t,key,opts)=>`<div class="fg"><h4>${t}</h4><div class=
 const tag=p=>p.home===2?'Новинка':p.old&&p.old>p.price*1.15?'Выгодно':'';
 const cutS=p=>p.cut?'img/cine/cut/'+p.cut.split('/').pop().replace('.png','.webp'):p.images[0];
 function card(p,xl){const o=(p.options||[])[0];const qa=o?`<small>${o.label}</small><div class="sz">${o.v.slice(0,8).map(v=>`<button data-add="${p.id}" data-v="${v}">${v}</button>`).join('')}</div>`:`<button class="one" data-add="${p.id}">В корзину</button>`;
- return `<article class="card${xl?' xl':''}" data-flip-id="${p.id}"><div class="pw"><a class="ph" href="product.html?id=${p.id}" aria-label="${p.name}">${tag(p)?`<span class="tag">${tag(p)}</span>`:''}<img class="a" src="${cutS(p)}" alt="${p.name}" loading="lazy"><img class="b" src="${p.images[1]||p.images[0]}" alt="" aria-hidden="true" loading="lazy"></a>
+ return `<article class="card${xl?' xl':''}" data-flip-id="${p.id}"><div class="pw"><a class="ph" href="product.html?id=${p.id}" aria-label="${p.name}">${tag(p)?`<span class="tag">${tag(p)}</span>`:''}<img class="a" src="${cutS(p)}" alt="${p.name}" loading="lazy" decoding="async"><img class="b" src="${p.images[1]||p.images[0]}" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
  <button class="fav ${Z.favs.has(p.id)?'on':''}" data-fav="${p.id}" aria-label="В избранное">${Z.heart}</button><div class="qa">${qa}</div><button type="button" class="qv" data-qv="${p.id}" aria-label="Быстрый просмотр: ${p.name}">Быстрый просмотр</button></div>
  <div class="meta">${p.catName}${p.material?' · '+p.material:''}</div><h3><a href="product.html?id=${p.id}">${p.name}</a></h3><div class="pr">${Z.fmt(p.price)}${p.old?`<s>${Z.fmt(p.old)}</s>`:''}</div></article>`;}
 const ED=[['Индивидуальные работы','Ваша история в драгоценной форме','Размер, материал, вставки, молитвы и лики святых — по вашему пожеланию.','img/ed/agate-craft.jpg','index.html#story'],
@@ -51,7 +51,7 @@ function render(flip=true){const st=flip&&window.Flip&&!RM&&!Z.CAPTURE?Flip.getS
  grid.innerHTML=L.length?h:`<div class="empty"><h3>Ничего не найдено</h3><p>Попробуйте изменить параметры или сбросить фильтры.</p><button class="btn solid" data-clr>Сбросить фильтры</button></div>`;
  $('#cnt').innerHTML=`<b>${L.length}</b> ${plural(L.length)}`;chips();fbody();
  grid.style.setProperty('--cols',S.cols);grid.style.setProperty('--mcols',S.mcols);$$('.dens button').forEach(b=>b.classList.toggle('on',+b.dataset.c===(innerWidth<=700?S.mcols:S.cols)));
- if(st)Flip.from(st,{duration:.6,ease:'power3.inOut',absolute:true,scale:true,nested:false,onEnter:e=>gsap.fromTo(e,{opacity:0,y:30},{opacity:1,y:0,duration:.6,stagger:.02}),onLeave:e=>gsap.to(e,{opacity:0,duration:.3})});
+ grid.classList.remove('fade');if(flip&&!RM)requestAnimationFrame(()=>grid.classList.add('fade'));if(st)Flip.from(st,{duration:.6,ease:'power3.inOut',absolute:true,scale:true,nested:false,onEnter:e=>gsap.fromTo(e,{opacity:0,y:30},{opacity:1,y:0,duration:.6,stagger:.02}),onLeave:e=>gsap.to(e,{opacity:0,duration:.3})});
  Z.bind(grid);}
 const set=(fn,bn)=>{fn();if(bn)banner();tabs();history.replaceState(0,'','?cat='+S.cat+(S.fav?'&fav=1':''));render();};
 if(window.LUX)LUX.watch(document);$('#tabs').onclick=e=>{const b=e.target.closest('button');if(b&&b.dataset.c!==S.cat)set(()=>S.cat=b.dataset.c,1);};

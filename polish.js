@@ -19,12 +19,12 @@ addEventListener('scroll',()=>{if(!tk){tk=1;requestAnimationFrame(up)}},{passive
 b.onclick=()=>{const l=window.__lenis;if(l&&!RM)l.scrollTo(0,{duration:1.6});else scrollTo({top:0,behavior:RM?'auto':'smooth'});(document.querySelector('.skip')||document.body).focus({preventScroll:true})};
 /* curtain + monogram preloader */
 if(RM){H.classList.remove('zv-cov');return}
-const c=document.createElement('div');c.className='cur';c.setAttribute('aria-hidden','true');c.innerHTML='<div class="cur-m"><img src="img/orn/rosette.svg" alt=""><b>З</b></div><p>ЗАВАРИН</p>';document.body.appendChild(c);
+const c=document.createElement('div');c.className='cur';c.setAttribute('aria-hidden','true');c.innerHTML='<div class="sp"><svg class="sp-x" viewBox="0 0 60 96" fill="none" stroke="currentColor"><path d="M30 3v90M21 15h18M10 33h40M18 70l24-9"/></svg><p class="sp-w">ЗАВАРИН</p><svg class="sp-l" viewBox="0 0 400 2" preserveAspectRatio="none"><path d="M0 1H400" stroke="currentColor"/></svg><p class="sp-s">Ювелирный дом · Кострома · с 2013</p></div><button type="button" class="sp-k">Пропустить</button>';document.body.appendChild(c);
 let first=false,nav=false;try{first=!sessionStorage.getItem('zv');nav=!!sessionStorage.getItem('zvn');sessionStorage.setItem('zv','1');sessionStorage.removeItem('zvn')}catch(e){}
 const replay=()=>{if(H.classList.contains('cv-in')){H.classList.remove('cv-in');requestAnimationFrame(()=>requestAnimationFrame(()=>H.classList.add('cv-in')))}};
-if(first||nav||H.classList.contains('zv-cov')){c.classList.add('on');if(first)c.classList.add('pre');H.classList.remove('zv-cov');let done=0;const t0=performance.now(),min=first?1150:200;
+if(first||nav||H.classList.contains('zv-cov')){c.classList.add('on');if(first)c.classList.add('pre');H.classList.remove('zv-cov');let done=0;const t0=performance.now(),min=first?1500:200;
  const lift=()=>{if(done)return;done=1;c.classList.add('out');replay();setTimeout(()=>c.classList.remove('on','out','pre'),950)};
- const go=()=>setTimeout(lift,Math.max(0,min-(performance.now()-t0)));document.readyState==='complete'?go():addEventListener('load',go,{once:true});setTimeout(lift,first?3200:1800)}
+ c.addEventListener('click',lift);addEventListener('keydown',function k(){lift();removeEventListener('keydown',k)});const go=()=>setTimeout(lift,Math.max(0,min-(performance.now()-t0)));document.readyState==='complete'?go():addEventListener('load',go,{once:true});setTimeout(lift,first?2600:1500)}
 document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target||a.hasAttribute('download'))return;
  let u;try{u=new URL(a.getAttribute('href'),location.href)}catch(_){return}if(u.origin!==location.origin||!/(\.html|\/)$/.test(u.pathname))return;if(u.pathname===location.pathname&&u.search===location.search&&u.hash)return;
  e.preventDefault();try{sessionStorage.setItem('zvn','1')}catch(_){}c.classList.remove('out','pre');c.classList.add('on','in');setTimeout(()=>{location.href=u.href},480)});
