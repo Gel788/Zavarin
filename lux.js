@@ -8,7 +8,7 @@ b.onclick=()=>set(true);$('#mmx').onclick=()=>set(false);mm.querySelectorAll('a'
 const get=k=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}};
 const counts=()=>{const f=get('zfav').length,c=get('zcart').length;$$('[data-fav-count]').forEach(e=>e.textContent=f||'');$$('[data-cart-count]').forEach(e=>e.textContent=c||'')};counts();addEventListener('storage',counts);
 if(window.Z){const s=Z.save.bind(Z);Z.save=function(){s();counts();if(cd&&cd.classList.contains('on'))renderCart()};Z.counts=counts}
-const fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0|,/g,' ')+' ₽',esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=n=>'<span class="nm">'+Math.round(n).toLocaleString('ru-RU').replace(/[\u00a0\u202f ,]/g,'\u202f')+'<span class="rb">\u00a0₽</span></span>',esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let DATA=null;const load=()=>DATA?Promise.resolve(DATA):fetch('products.json').then(r=>r.json()).then(d=>DATA=d);
 /* cart drawer */
 document.body.insertAdjacentHTML('beforeend','<div class="cd" id="cd" role="dialog" aria-modal="true" aria-labelledby="cdh"><div class="sc" data-cd-close></div><div class="pn"><h2 id="cdh">Корзина</h2><button class="x" data-cd-close aria-label="Закрыть корзину">×</button><div id="cdb"></div></div></div>');

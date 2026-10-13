@@ -1,5 +1,5 @@
 (()=>{const C=window.CV||{rm:true},$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];document.documentElement.classList.add('cine-cat');
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0|,/g,' ')+'\u00a0₽';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>'<span class="nm">'+Math.round(n).toLocaleString('ru-RU').replace(/[\u00a0\u202f ,]/g,'\u202f')+'<span class="rb">\u00a0₽</span></span>';
 const HERO={all:'krest-07-21-07550-00-1',crosses:'krest-07-21-07550-00-1',icons:'ikona-06-25-01460-00-1',rings:'koltso-02-22-00034-7-1',chains:'tsep-04-20-21208525-1',bracelets:'braslet-03-10-02103-1',cords:'shnur-05-12-03011-00-1',chetki:'chyetki-11-12-00001-40-1',aksessuary:'zaponki-20-32-00002-00-1'};
 let P=[];const cut=p=>p.id==='krest-07-21-07550-00-1'?'img/hs/p00.webp':'img/cine/cut/'+p.cut.split('/').pop().replace('.png','.webp');
 const bn=$('#banner');let bTL=[];
@@ -27,7 +27,7 @@ if(!C.rm)setTimeout(prep,60);
 })();
 /* v11: category switcher previews, editorial grid, quick view */
 (()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0|,/g,' ')+'\u00a0₽';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>'<span class="nm">'+Math.round(n).toLocaleString('ru-RU').replace(/[\u00a0\u202f ,]/g,'\u202f')+'<span class="rb">\u00a0₽</span></span>';
 const TH={all:'krest-07-21-07550-00-1',crosses:'krest-07-23-07630-00-5',rings:'koltso-02-22-00034-7-1',icons:'ikona-06-25-01460-00-1',chains:'tsep-04-20-21208525-1',bracelets:'braslet-03-10-02103-1',cords:'shnur-05-12-03011-00-1',chetki:'chyetki-11-12-00001-40-1',aksessuary:'zaponki-20-32-00002-00-1'};
 let P=[];const cut=p=>'img/cine/m/'+p.cut.split('/').pop().replace('.png','.webp'),big=p=>'img/cine/cut/'+p.cut.split('/').pop().replace('.png','.webp');
 const tabs=$('#tabs');tabs.classList.add('tx');const deco=()=>{};

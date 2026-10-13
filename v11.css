@@ -27,7 +27,7 @@ body{font-feature-settings:"kern"}
 .card h3{font-size:clamp(17px,1.35vw,21px)}
 /* prices: quiet sans, lining */
 .pr,.price,.cv-pi .pr,.mq p,.cbn-cap span,.tot{font-family:var(--sans)!important;font-variant-numeric:lining-nums tabular-nums;letter-spacing:.02em}
-.price b{font:400 clamp(24px,2vw,30px)/1 var(--sans)!important;letter-spacing:.02em}
+.price b{font-weight:400;line-height:1;letter-spacing:.02em}
 /* v10 ornaments — subtler */
 body:after{opacity:.032}
 .sec.dark,.sec.graph,.ft,.mm,.cv-mq{background-image:linear-gradient(rgba(11,11,12,.975),rgba(11,11,12,.975)),url(img/orn/rosette.svg)!important}
@@ -266,3 +266,26 @@ html.js-v14 .stz-t.in>*:nth-child(2){transition-delay:.08s}html.js-v14 .stz-t.in
 .cine-cat .card .ph .a,.mq .im img{-webkit-box-reflect:none!important}
 .cine-cat .card .ph:before{display:none}
 .cine-cat .card .ph{background:linear-gradient(180deg,transparent 83%,rgba(236,222,196,.08) 83%,rgba(236,222,196,.08) calc(83% + 1px),#0b0b0c calc(83% + 1px)),radial-gradient(70% 50% at 50% 0%,rgba(236,222,196,.15),rgba(236,222,196,0) 72%),linear-gradient(180deg,#1b1a18 0%,#111112 64%,#0a0a0b 100%)!important}
+/* v15 numerals: Cormorant lining figures, thin spaces, small ruble */
+html{font-variant-numeric:lining-nums}
+.nm{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500;font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1;white-space:nowrap;letter-spacing:.005em}
+.nm .rb{font-size:.64em;letter-spacing:0;margin-left:.02em;font-weight:500;opacity:.8}
+s .nm,s.nm{font-weight:400}
+.pr .nm{font-size:1.18em}.pr s .nm{font-size:.92em}
+.price b .nm{font-size:clamp(34px,2.9vw,42px);font-weight:500;letter-spacing:0}
+.price s .nm{font-size:19px}
+.price em{font-family:'Cormorant Garamond',serif!important;font-style:normal!important;font-weight:500!important;font-size:15px!important;line-height:1;font-variant-numeric:lining-nums;letter-spacing:.02em}
+.tot .nm{font-size:1.35em}
+.meta span,.i-dl dd,dl dd{font-variant-numeric:lining-nums tabular-nums}
+.info .meta span{font:500 15px/1.3 'Cormorant Garamond',serif;letter-spacing:.03em}
+.circ button,.sz button,.qv-sz button{font-family:'Cormorant Garamond',serif!important;font-weight:500!important;font-size:17px!important;font-variant-numeric:lining-nums tabular-nums}
+.i-dl dd,.chars dd,.info dl dd{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500}
+.stc,.stc b{font-family:'Forum',serif!important;letter-spacing:.12em;font-size:13px}
+a.tel{font-family:'Cormorant Garamond',serif!important;font-weight:500!important;font-size:16px!important;line-height:1;letter-spacing:.02em}
+.i-c b{font-variant-numeric:lining-nums}
+*,*:before,*:after{font-feature-settings:"lnum" 1,"tnum" 1}
+.nm,.circ button,.sz button,.i-dl dd{font-feature-settings:"lnum" 1,"tnum" 1}
+.price{align-items:baseline}.price s{margin-left:14px}
+*,*:before,*:after{font-feature-settings:"kern" 1,"lnum" 1,"tnum" 1!important}
+.hd .logo{font-feature-settings:"smcp" 1,"lnum" 1!important}
+.tot>span:first-child{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;letter-spacing:.01em}

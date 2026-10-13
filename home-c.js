@@ -1,5 +1,5 @@
 (()=>{const C=window.CV||{rm:true},$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0|,/g,' ')+'\u00a0₽';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>'<span class="nm">'+Math.round(n).toLocaleString('ru-RU').replace(/[\u00a0\u202f ,]/g,'\u202f')+'<span class="rb">\u00a0₽</span></span>';
 $$('.cv-word .lt>span').forEach((s,i,a)=>s.style.setProperty('--k',Math.abs(i-(a.length-1)/2)));
 /* marquee of real products */
 const card=(p,d)=>`<a href="product.html?id=${p.id}"${d?' aria-hidden="true" tabindex="-1"':''}><div class="im"><img src="img/cine/m/${p.cut.split('/').pop().replace('.png','.webp')}"${p.hd&&window.Z?Z.ss(p.hd.c.filter(w=>w<=960),'cut',p.cut):''} sizes="240px" alt="${d?'':esc(p.name)}" loading="lazy" width="400" height="380"></div><h3>${esc(p.name)}</h3><p>${fmt(p.price)}${p.old?`<s>${fmt(p.old)}</s>`:''}</p></a>`;

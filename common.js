@@ -2,7 +2,7 @@
 const CAPTURE=location.search.includes('capture');const H=document.documentElement;
 if(CAPTURE)H.classList.add('capture');if(matchMedia('(hover:none)').matches)H.classList.add('touch');
 window.Z={CAPTURE,
- fmt:n=>n.toLocaleString('ru-RU').replace(/\u00a0/g,' ')+' ₽',
+ fmt:n=>'<span class="nm">'+Math.round(n).toLocaleString('ru-RU').replace(/[\u00a0\u202f ,]/g,'\u202f')+'<span class="rb">\u00a0₽</span></span>',
  favs:new Set(JSON.parse(localStorage.getItem('zfav')||'[]')),
  cart:JSON.parse(localStorage.getItem('zcart')||'[]'),
  save(){localStorage.setItem('zfav',JSON.stringify([...this.favs]));localStorage.setItem('zcart',JSON.stringify(this.cart));this.counts();},
