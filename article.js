@@ -1,0 +1,7 @@
+(()=>{const s=new URLSearchParams(location.search).get('s'),E=x=>String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('blog.json').then(r=>r.json()).then(B=>{const i=Math.max(0,B.findIndex(a=>a.slug===s)),a=B[i],nx=B[(i+1)%B.length];document.title=a.title+' — ЗАВАРИН';
+ let ul=false,h='';a.blocks.forEach(([t,x])=>{if(t==='li'){if(!ul){h+='<ul>';ul=true}h+=`<li>${E(x)}</li>`;return}if(ul){h+='</ul>';ul=false}t=t==='h3'?'h2':t;h+=`<${t}>${E(x).replace(/\n+\s*/g,'<br>')}</${t}>`});if(ul)h+='</ul>';
+ document.getElementById('art').innerHTML=`<article><header class="art-h"><div class="wrap"><nav class="crumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a> / <a href="blog.html">Журнал</a></nav><p class="lbl">${E(a.date)}</p><h1>${E(a.title)}</h1><p class="lead" style="max-width:60ch;color:#3c3934">${E(a.ex)}</p></div></header>
+ <div class="wrap art-im"><img src="${a.img}" width="${a.w}" height="${a.h}" alt="${E(a.title)}"></div><div class="wrap art-b"><div class="prose">${h}<p style="margin-top:40px;font-size:13px;color:var(--stone)">Источник: <a href="https://zavarin.art/blog/detail/${a.slug}/" rel="noopener">zavarin.art/blog</a></p></div></div></article>
+ <section class="sec graph"><div class="wrap"><p class="lbl" style="color:var(--mist)">Следующая статья</p><a href="article.html?s=${nx.slug}" style="display:block;margin-top:14px"><h2 class="h2">${E(nx.title)}</h2></a></div></section>`;
+ window.LUX&&LUX.watch(document)})})();
