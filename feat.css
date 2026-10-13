@@ -106,3 +106,26 @@
  .cxm-row dd{margin:0;font:500 17px/1.35 'Cormorant Garamond',serif;min-width:0;overflow-wrap:anywhere}.cxm-row dd s{display:block;color:#9b9488;font-size:.85em}
  .cx-bar{position:relative}
 }
+/* v17 mobile hero: static flow, no overlap */
+@media (max-width:768px),(max-height:520px) and (orientation:landscape) and (max-width:1024px){
+ .cv{height:auto!important;min-height:0!important}
+ .cv .cv-st{position:relative!important;height:auto!important;min-height:0!important;display:flex;flex-direction:column;overflow:visible;padding:calc(var(--hd-h,64px) + 18px) 0 56px}
+ .cv .cv-word,.cv .cv-macro,.cv .cv-sc,.cv .cv-i,.cv .cv-cap{display:none!important}
+ .cv .cv-top{position:static!important;order:0;opacity:1!important;justify-content:center;text-align:center}
+ .cv .cv-top .lbl{font-size:10.5px;letter-spacing:.24em}
+ .cv .cv-top .lbl:first-child::before{content:'ЗАВАРИН';display:block;font:400 15px/1 'Forum',serif;letter-spacing:.5em;color:#d9c49a;margin:0 0 12px .5em}
+ .cv .cv-obj{position:relative!important;overflow:hidden;order:1;left:auto!important;top:auto!important;transform:none!important;width:100%!important;height:min(70svh,560px)!important;margin:14px 0 0;display:block}
+ .cv .cv-obj::after{content:'';position:absolute;left:12%;right:12%;bottom:0;height:22%;background:radial-gradient(50% 60% at 50% 30%,rgba(236,222,196,.12),rgba(236,222,196,0) 70%);border-top:1px solid rgba(236,222,196,.08);pointer-events:none}
+ .cv .cv-live,.cv .cv-f{position:absolute;inset:0 0 12% 0}
+ .cv .cv-f img{position:static!important;box-sizing:border-box!important;padding:0!important;margin:0!important;min-height:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;transform:none!important;-webkit-box-reflect:below 2px linear-gradient(transparent 78%,rgba(0,0,0,.22))}
+ .cv .cv-f[data-f="1"],.cv .cv-f[data-f="2"]{display:none}
+ .cv .cv-bot{position:static!important;width:auto!important;order:2;display:flex;flex-direction:column;gap:0;margin-top:40px;opacity:1!important;transform:none!important}
+ .cv .cv-r{order:0;opacity:1!important;text-align:center;border:0!important;padding:0!important}
+ .cv .cv-pi{display:flex;flex-direction:column;align-items:center;gap:14px;border:0!important;padding:0!important}
+ .cv .cv-pi .fh{font:500 22px/1.25 'Cormorant Garamond',serif;max-width:22ch;margin:0}
+ .cv .cv-pi .pr{margin:0;display:flex;gap:12px;align-items:baseline}.cv .cv-pi .pr b{font-size:26px;font-weight:500}.cv .cv-pi .pr s{font-size:16px;color:#8c867b}
+ .cv .cv-l{order:1;margin-top:clamp(90px,16svh,150px);opacity:1!important;transform:none!important;text-align:center}
+ .cv .cv-l .cv-h{font-size:clamp(34px,10vw,44px);line-height:1.08}
+ .cv .cv-l .act{flex-direction:column;align-items:stretch;gap:18px;margin-top:28px}.cv .cv-l .act .lk{align-self:center}
+}
+@media (max-width:768px) and (prefers-reduced-motion:no-preference){.cv .cv-f img{-webkit-box-reflect:below 2px linear-gradient(transparent 78%,rgba(0,0,0,.22))}}

@@ -12,10 +12,10 @@ function marq(){const tw=[gsap.fromTo('#mq1',{xPercent:0},{xPercent:-50,duration
 const q=$('.cv-quote');const W=[];if(q){const wrap=(node)=>{[...node.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();n.textContent.split(/( )/).forEach(t=>{if(t===' ')f.appendChild(document.createTextNode(' '));else if(t){const s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s);W.push(s)}});n.replaceWith(f)}else if(n.nodeType===1)wrap(n)})};wrap(q)}
 if(C.rm)return;
 requestAnimationFrame(()=>requestAnimationFrame(()=>document.documentElement.classList.add('cv-in')));
-const mob=matchMedia('(max-width:760px)').matches;
+const mob=matchMedia('(max-width:760px)').matches,hm=matchMedia('(max-width:768px),(max-height:520px) and (orientation:landscape) and (max-width:1024px)').matches;
 /* HERO cinematography */
 const F=$$('.cv-f'),obj=$('#cvobj'),L=$$('.cv-word .lt'),caps=$$('.cv-cap'),n=$('#cvn'),st=$('.cv-st');
-st.insertAdjacentHTML('beforeend','<span class="cv-fade" aria-hidden="true" style="position:absolute;inset:0;background:#f3eee4;opacity:0;pointer-events:none"></span>');
+if(!hm){st.insertAdjacentHTML('beforeend','<span class="cv-fade" aria-hidden="true" style="position:absolute;inset:0;background:#f3eee4;opacity:0;pointer-events:none"></span>');
 gsap.set(obj,{xPercent:-50,yPercent:-50,left:'50%',top:mob?'40%':'50%',transform:'none'});gsap.set(obj,{xPercent:-50,yPercent:-50});
 let lk=-1;const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'.cv',start:'top top',end:'bottom bottom',scrub:.7,onUpdate:s=>{const p=s.progress,k=p<.31?0:p<.5?1:2;if(k!==lk){lk=k;caps.forEach((c,i)=>c.classList.toggle('on',i===k));n.textContent='0'+(k+1)}}}});
 tl.to(L,{xPercent:i=>(i-3)*(mob?22:34),opacity:.06,duration:2.6},0)
@@ -35,6 +35,7 @@ tl.to(L,{xPercent:i=>(i-3)*(mob?22:34),opacity:.06,duration:2.6},0)
  .to(obj,{scale:mob?8:10,opacity:0,duration:1.6,ease:'power2.in'},8.8)
  .to('.cv-top',{opacity:0,duration:.6},8.8)
  .to('.cv-fade',{opacity:1,duration:.7},9.7);
+}
 /* quote scrub */
 if(W.length)gsap.to(W,{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:q,start:'top 82%',end:'bottom 42%',scrub:.5}});
 gsap.to('.cv-q',{backgroundColor:'#0b0b0c',color:'#ece7dd',ease:'none',scrollTrigger:{trigger:'.cv-q',start:'bottom 75%',end:'bottom 15%',scrub:true}});
