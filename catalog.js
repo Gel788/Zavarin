@@ -44,8 +44,9 @@ function list(){let L=P.filter(p=>fit(p));if(S.sort==='asc')L.sort((a,b)=>a.pric
 function chips(){const c=[];S.cat!=='all'&&c.push(['cat',S.cat,CN[S.cat]]);['m','s','p'].forEach(k=>S[k].forEach(v=>c.push([k,v,v])));
  $('#chips').innerHTML=c.map(x=>`<button class="chip" data-ck="${x[0]}" data-cv="${x[1]}" aria-label="Убрать фильтр ${x[2]}">${x[2]}</button>`).join('')+(c.length>1?'<button class="chip clr" data-clr>Сбросить всё</button>':'');}
 const plural=n=>n%10===1&&n%100!==11?'изделие':[2,3,4].includes(n%10)&&![12,13,14].includes(n%100)?'изделия':'изделий';
-function render(flip=true){const st=flip&&window.Flip&&!RM&&!Z.CAPTURE?Flip.getState('#grid > .card, #grid > .edt'):null;const L=list();
- let h='';L.forEach((p,i)=>{h+=card(p);if(i===5&&L.length>9)h+=edt(ED[0]);});
+function render(flip=true){const st=flip&&window.Flip&&!RM&&!Z.CAPTURE?Flip.getState('#grid > .card, #grid > .edt, #grid > .cg-h'):null;let L=list();
+ const grp=S.cat==='all'&&S.sort==='pop'&&!S.fav,ko=Object.keys(CN);if(grp)L=L.map((p,i)=>[p,i]).sort((a,b)=>ko.indexOf(a[0].cat)-ko.indexOf(b[0].cat)||a[1]-b[1]).map(x=>x[0]);
+ let h='',pc='';L.forEach((p,i)=>{if(grp&&p.cat!==pc){pc=p.cat;h+=`<h2 class="cg-h" data-flip-id="h-${p.cat}"><span>${CN[p.cat]}</span><sup>${L.filter(x=>x.cat===p.cat).length}</sup></h2>`}h+=card(p);if(!grp&&i===5&&L.length>9)h+=edt(ED[0]);});
  grid.innerHTML=L.length?h:`<div class="empty"><h3>Ничего не найдено</h3><p>Попробуйте изменить параметры или сбросить фильтры.</p><button class="btn solid" data-clr>Сбросить фильтры</button></div>`;
  $('#cnt').innerHTML=`<b>${L.length}</b> ${plural(L.length)}`;chips();fbody();
  grid.style.setProperty('--cols',S.cols);grid.style.setProperty('--mcols',S.mcols);$$('.dens button').forEach(b=>b.classList.toggle('on',+b.dataset.c===(innerWidth<=700?S.mcols:S.cols)));
