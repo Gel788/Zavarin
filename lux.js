@@ -46,7 +46,7 @@ const tint=$$('main>section');const BG={dark:'#0b0b0c',graph:'#17181a',cust:'#e9
 const bgOf=s=>s.classList.contains('hero')?'#0b0b0c':s.classList.contains('dark')?BG.dark:s.classList.contains('graph')?BG.graph:s.classList.contains('cust')?BG.cust:'#f3eee4';
 tint.forEach((s,i)=>{s.dataset.bg=bgOf(s);if(i&&tint[i-1].dataset.bg!==s.dataset.bg){s.classList.add('blend');s.style.setProperty('--prev',tint[i-1].dataset.bg)}});
 /* elements */
-const hero=$('.hero'),cross=$('.hero .obj'),htx=$('.hero .tx');if(hero){hero.insertAdjacentHTML('beforeend','<span class="lit" aria-hidden="true"></span><span class="shade" aria-hidden="true"></span>')}
+const hero=$('.hero:not(.hs)'),cross=$('.hero .obj'),htx=$('.hero .tx');if(hero){hero.insertAdjacentHTML('beforeend','<span class="lit" aria-hidden="true"></span><span class="shade" aria-hidden="true"></span>')}
 const lit=$('.hero .lit'),shade=$('.hero .shade');
 $$('.ws .ph,.cust .ph,.gal .ph').forEach(p=>p.classList.add('par'));
 const hist=$('.hist'),tl=hist?[...hist.querySelectorAll('.tl div')]:[],yr=hist&&hist.querySelector('.yr');const yrs=['2013','2018','Сегодня'];
