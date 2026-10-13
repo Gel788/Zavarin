@@ -177,3 +177,13 @@ html.rm .cine-prod .gal.v11 .sl{transition:none}
 @media (max-width:860px){.cine-prod .gal.v11 .arr.p{left:6px}.cine-prod .gal.v11 .arr.n{right:6px}}
 .qv-x{color:#1b1a18!important}@media (max-width:760px){.qv-x{color:#ece7dd!important}}
 .cine-cat .card .ph{background:transparent!important}
+/* category switcher: text-only, tracked caps */
+#tabs.tx{display:flex;gap:clamp(22px,2.6vw,44px);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;border-bottom:1px solid rgba(27,26,24,.12);padding:0;margin-top:clamp(28px,4vw,48px)}
+#tabs.tx::-webkit-scrollbar{display:none}
+#tabs.tx button{flex:0 0 auto;position:relative;padding:18px 0 16px;font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#7a7468;white-space:nowrap;transition:color .3s}
+#tabs.tx button sup{font:400 10px/1 var(--sans);letter-spacing:.04em;color:#a39c8f;margin-left:6px;vertical-align:.4em}
+#tabs.tx button:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:#b39a68;transform:scaleX(0);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+#tabs.tx button:hover{color:#1b1a18}
+#tabs.tx button.on{color:#1b1a18}#tabs.tx button.on:after{transform:scaleX(1)}
+#tabs.tx .tb-im{display:none}
+@media (max-width:760px){#tabs.tx{margin-right:calc(-1*var(--pad));padding-right:var(--pad);gap:26px}#tabs.tx button{font-size:10.5px;letter-spacing:.18em}}

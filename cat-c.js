@@ -30,8 +30,7 @@ if(!C.rm)setTimeout(prep,60);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0|,/g,' ')+'\u00a0₽';
 const TH={all:'krest-07-21-07550-00-1',crosses:'krest-07-23-07630-00-5',rings:'koltso-02-22-00034-7-1',icons:'ikona-06-25-01460-00-1',chains:'tsep-04-20-21208525-1',bracelets:'braslet-03-10-02103-1',cords:'shnur-05-12-03011-00-1',chetki:'chyetki-11-12-00001-40-1',aksessuary:'zaponki-20-32-00002-00-1'};
 let P=[];const cut=p=>'img/cine/m/'+p.cut.split('/').pop().replace('.png','.webp'),big=p=>'img/cine/cut/'+p.cut.split('/').pop().replace('.png','.webp');
-const tabs=$('#tabs');const deco=()=>{if(!P.length)return;$$('#tabs button[data-c]').forEach(b=>{if(b.querySelector('.tb-im'))return;const p=P.find(x=>x.id===TH[b.dataset.c]);if(p)b.insertAdjacentHTML('afterbegin',`<span class="tb-im" aria-hidden="true"><img src="${cut(p)}" alt="" loading="lazy"></span>`)});tabs.classList.add('pv')};
-new MutationObserver(deco).observe(tabs,{childList:true});
+const tabs=$('#tabs');tabs.classList.add('tx');const deco=()=>{};
 const grid=$('#grid');const cols=()=>{const n=getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;grid.classList.toggle('wide',n>=3);grid.classList.toggle('one',n<2)};new MutationObserver(cols).observe(grid,{childList:true,attributes:true,attributeFilter:['style']});addEventListener('resize',cols);cols();
 /* quick view */
 document.body.insertAdjacentHTML('beforeend','<div class="qvm" id="qvm" role="dialog" aria-modal="true" aria-labelledby="qvh" hidden><div class="qv-ov" data-x></div><div class="qv-p"><button class="qv-x" data-x aria-label="Закрыть">×</button><div class="qv-g"><div class="qv-st" id="qvst"></div><div class="qv-th" id="qvth" role="group" aria-label="Фотографии"></div></div><div class="qv-i" id="qvi"></div></div></div>');
