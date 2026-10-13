@@ -1,10 +1,10 @@
 /* ZAVARIN v20 — engraved ornament system (static SVG backgrounds; no blend/filters) */
 :root{--o:img/orn2/}
 /* dark sections: vine border on top, partial guilloché rosette bleeding off edge, wave micro-tile */
-.sec.dark,.band.dark,.cv-mq,.stz,.e404{background-image:url(img/orn2/vine-g.svg),url(img/orn2/rosette-g.svg),url(img/orn2/wave-g.svg)!important;background-repeat:repeat-x,no-repeat,repeat!important;background-size:200px 48px,min(980px,120vw),240px 60px!important;background-position:0 14px,calc(100% + 34vw) -30%,0 0!important;background-blend-mode:normal!important}
+.sec.dark,.band.dark,.cv-mq,section.stz,.e404{background-image:url(img/orn2/vine-g.svg),url(img/orn2/rosette-g.svg),url(img/orn2/wave-g.svg)!important;background-repeat:repeat-x,no-repeat,repeat!important;background-size:200px 48px,min(980px,120vw),240px 60px!important;background-position:0 14px,calc(100% + 34vw) -30%,0 0!important;background-blend-mode:normal!important}
 .sec.dark:nth-of-type(even),.band.dark:nth-of-type(even){background-image:url(img/orn2/interlace-g.svg),url(img/orn2/rosette-g.svg),url(img/orn2/hatch-g.svg)!important;background-size:64px 32px,min(980px,120vw),12px 12px!important;background-position:0 16px,-34vw 130%,0 0!important}
 .cv-h-sec{background-image:url(img/orn2/wave-g.svg)!important;background-repeat:repeat!important;background-size:240px 60px!important}
-.stz{background-position:0 14px,-30vw 50%,0 0!important}
+section.stz{background-position:0 14px,-30vw 50%,0 0!important}
 .e404{background-position:0 90px,calc(100% + 18vw) 50%,0 0!important;background-size:200px 48px,min(1100px,140vw),240px 60px!important}
 /* footer */
 .ft{background-image:url(img/orn2/interlace-g.svg),url(img/orn2/rosette-g.svg),url(img/orn2/hatch-g.svg)!important;background-repeat:repeat-x,no-repeat,repeat!important;background-size:64px 32px,1100px,12px 12px!important;background-position:0 0,50% calc(100% + 560px),0 0!important}

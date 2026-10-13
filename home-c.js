@@ -15,7 +15,7 @@ requestAnimationFrame(()=>requestAnimationFrame(()=>document.documentElement.cla
 const mob=matchMedia('(max-width:760px)').matches,hm=matchMedia('(max-width:768px),(max-height:520px) and (orientation:landscape) and (max-width:1024px)').matches;
 /* HERO cinematography */
 const F=$$('.cv-f'),obj=$('#cvobj'),L=$$('.cv-word .lt'),caps=$$('.cv-cap'),n=$('#cvn'),st=$('.cv-st');
-if(hm){document.documentElement.classList.add('cvm');
+if(!$('.cv-st')){}else if(hm){document.documentElement.classList.add('cvm');
  const l=$('.cv-l');if(l){const w=document.createElement('section');w.className='cv-lm';w.innerHTML='<div class="wrap"></div>';w.firstChild.appendChild(l);$('.cv').after(w)}
  const F=$$('.cv-f'),obj=$('#cvobj'),caps=$$('.cv-cap'),pi=$('.cv-pi'),LW=$$('.cv-word .lt');let lk=0;
  gsap.set(F,{force3D:true});

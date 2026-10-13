@@ -163,3 +163,20 @@
  html.cvm .cv .cv-top,html.cvm .cv .cv-bot{position:relative;z-index:2}
  html.cvm .cv .cv-top{margin-bottom:4px}
 }
+/* v21 navigation loader (curtain) */
+.cur .nl{display:none;flex-direction:column;align-items:center;gap:16px;color:#c9ad78}
+.cur.nv:not(.pre) .nl{display:flex}
+.cur.nv{background:radial-gradient(80% 60% at 50% 45%,#141210 0%,#0b0b0c 70%)}
+.cur.nv.in{animation:nvIn .32s ease both}
+@keyframes nvIn{from{opacity:0}to{opacity:1}}
+.cur.nv.out{transform:none!important;opacity:0;transition:opacity .45s ease!important}
+.nl-x{width:26px;height:42px;stroke-width:1.1}
+.nl-x path{stroke-dasharray:1;stroke-dashoffset:1;animation:nlD .6s cubic-bezier(.6,0,.2,1) .05s forwards}
+.cur.arr .nl-x path{stroke-dashoffset:0;animation:none}
+@keyframes nlD{to{stroke-dashoffset:0}}
+.nl-t{margin:0;font:400 clamp(18px,2vw,24px)/1.2 'Forum',serif!important;letter-spacing:.32em!important;padding-left:.32em;text-transform:uppercase;color:#ece7dd!important;opacity:1!important;min-height:1.2em;text-align:center;max-width:80vw}
+.nl-b{display:block;width:min(220px,50vw);height:1px;background:rgba(201,173,120,.18);position:relative;overflow:hidden}
+.nl-b:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#8a6d3f,#e8d3a3,#c9ad78);transform:scaleX(0);transform-origin:0 50%;animation:nlB .9s cubic-bezier(.5,0,.2,1) forwards}
+.cur.arr .nl-b:after{transform:scaleX(.6);animation:nlB2 .35s ease-out forwards}
+@keyframes nlB{to{transform:scaleX(.7)}}@keyframes nlB2{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.nl-x path,.nl-b:after{animation:none!important;stroke-dashoffset:0;transform:scaleX(1)}}
