@@ -17,6 +17,8 @@ window.Z={CAPTURE,
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);const d=+(e.target.dataset.d||0);if(window.gsap&&!CAPTURE)gsap.to(e.target,{opacity:1,y:0,duration:1.1,delay:d,ease:'power3.out'});else{e.target.style.opacity=1;e.target.style.transform='none';}}}),{rootMargin:'0px 0px -6% 0px'});
   root.querySelectorAll('.reveal').forEach(el=>io.observe(el));}
 };
+Z.hdN=u=>u.split('/').pop().replace(/\.(png|jpe?g|webp)$/,'');
+Z.ss=(ws,pre,u)=>ws&&ws.length?' srcset="'+ws.map(w=>'img/hd/'+pre+'-'+Z.hdN(u)+'-'+w+'.webp '+w+'w').join(', ')+'"':'';
 document.addEventListener('DOMContentLoaded',()=>{
  const nav=document.querySelector('header.nav');const sn=()=>nav&&nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',sn);sn();
  Z.counts();

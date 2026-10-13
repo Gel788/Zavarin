@@ -10,7 +10,7 @@ const metaH=`<div class="meta"><span>Арт. ${p.art}</span>${metal?`<span>${met
 $('#mtitle').innerHTML=`<h1>${p.name}</h1>${metaH}`;
 /* gallery */
 const all=[p.cut,...imgs];
-$('#slides').innerHTML=all.map((s,k)=>`<button class="sl${k?'':' v'}" data-k="${k}" aria-label="Открыть фото ${k+1}"><img src="${s}" alt="${p.name}${k?' — фото '+k:''}" ${k>1?'loading="lazy"':''}><span class="zi" aria-hidden="true">⤢</span></button>`).join('');
+$('#slides').innerHTML=all.map((s,k)=>`<button class="sl${k?'':' v'}" data-k="${k}" aria-label="Открыть фото ${k+1}"><img src="${s}"${p.hd&&!/\/cut\//.test(s)?Z.ss(p.hd.i[p.images.indexOf(s)],'ph',s):(p.hd&&s===p.cut?Z.ss(p.hd.c,'cut',s):'')} sizes="(max-width:1024px) 100vw, 55vw" alt="${p.name}${k?' — фото '+k:''}" ${k>1?'loading="lazy"':'decoding="async"'}><span class="zi" aria-hidden="true">⤢</span></button>`).join('');
 $('#dots').innerHTML=all.map((_,k)=>`<button data-k="${k}" aria-label="Фото ${k+1}" class="${k?'':'on'}"></button>`).join('');
 const slides=[...document.querySelectorAll('.sl')],dots=[...document.querySelectorAll('#dots button')];
 const mob=()=>innerWidth<=860;

@@ -2,7 +2,7 @@
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0|,/g,' ')+'\u00a0₽';
 $$('.cv-word .lt>span').forEach((s,i,a)=>s.style.setProperty('--k',Math.abs(i-(a.length-1)/2)));
 /* marquee of real products */
-const card=(p,d)=>`<a href="product.html?id=${p.id}"${d?' aria-hidden="true" tabindex="-1"':''}><div class="im"><img src="img/cine/m/${p.cut.split('/').pop().replace('.png','.webp')}" alt="${d?'':esc(p.name)}" loading="lazy" width="400" height="380"></div><h3>${esc(p.name)}</h3><p>${fmt(p.price)}${p.old?`<s>${fmt(p.old)}</s>`:''}</p></a>`;
+const card=(p,d)=>`<a href="product.html?id=${p.id}"${d?' aria-hidden="true" tabindex="-1"':''}><div class="im"><img src="img/cine/m/${p.cut.split('/').pop().replace('.png','.webp')}"${p.hd&&window.Z?Z.ss(p.hd.c.filter(w=>w<=960),'cut',p.cut):''} sizes="240px" alt="${d?'':esc(p.name)}" loading="lazy" width="400" height="380"></div><h3>${esc(p.name)}</h3><p>${fmt(p.price)}${p.old?`<s>${fmt(p.old)}</s>`:''}</p></a>`;
 fetch('products.json').then(r=>r.json()).then(d=>{const P=d.products.filter(p=>p.cut&&p.cat!=='aksessuary');const A=P.filter((_,i)=>i%2==0).slice(0,12),B=P.filter((_,i)=>i%2==1).slice(0,12);
  [[$('#mq1'),A],[$('#mq2'),B]].forEach(([el,L])=>{if(!el)return;el.innerHTML=L.map(p=>card(p)).join('')+(C.rm?'':L.map(p=>card(p,1)).join(''))});
  if(!C.rm)marq()}).catch(()=>{});
